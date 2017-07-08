@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/home.css'
-import CodeEditor from './Editor'
+import CodeEditor from './CodeEditor'
 
 class Home extends Component {
 

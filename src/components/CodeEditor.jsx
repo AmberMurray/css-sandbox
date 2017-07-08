@@ -1,5 +1,9 @@
 import ReactAce from 'react-ace-editor';
 import React, { Component } from 'react';
+import AceEditor from 'react-ace';
+
+import 'brace/mode/javascript';
+
 
 class CodeEditor extends Component {
   contructor() {
@@ -16,7 +20,7 @@ class CodeEditor extends Component {
       <ReactAce
         mode="javascript"
         theme="eclipse"
-        setReadOnly='false'
+        // setReadOnly=false
         onChange={this.onChange}
         style={{ height: '400px' }}
         ref={instance => { this.ace = instance; }} // Let's put things into scope
@@ -24,3 +28,5 @@ class CodeEditor extends Component {
     );
   }
 }
+
+export default CodeEditor
