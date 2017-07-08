@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 
-class Main extends Component {
+class Forms extends Component {
 
   render() {
     return (
       <div>
-        <h2>I am Main</h2>
+        <h2>I am Forms</h2>
       </div>
     )
   }
 }
 
-export default Main;
+export default Forms;

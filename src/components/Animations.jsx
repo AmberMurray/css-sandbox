@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 
-class Main extends Component {
+class Animations extends Component {
 
   render() {
     return (
       <div>
-        <h2>I am Main</h2>
+        <h2>I am Animations</h2>
       </div>
     )
   }
 }
 
-export default Main;
+export default Animations;
