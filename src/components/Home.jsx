@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/home.css'
+import CodeEditor from './Editor'
 
 class Home extends Component {
 
@@ -7,6 +8,7 @@ class Home extends Component {
     return (
       <div>
         <h2>I am Home</h2>
+        <CodeEditor />
       </div>
     )
   }
