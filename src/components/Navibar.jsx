@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 
 class Navibar extends Component {
-  constructor () {
-    super()
-
-    }
 
   render() {
     return (
-      <div>
-        <h2>I am the Navibar</h2>
-      </div>
+      <header>
+        <nav>
+          <ul>
+            <li><Link to='/'>Home</Link></li>
+            <li><Link to='/login'>Login</Link></li>
+          </ul>
+        </nav>
+      </header>
     )
   }
 }

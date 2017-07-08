@@ -3,11 +3,6 @@ import Navibar from './components/Navibar'
 import Main from  './components/Main'
 
 class App extends Component {
-  constructor () {
-    super()
-
-    }
-
   render() {
     return (
       <div>
