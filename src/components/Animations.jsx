@@ -5,7 +5,7 @@ class Animations extends Component {
 
   render() {
     return (
-      <div className="animations-dropdown">
+      <div>
         <div className='animations-div'>
           <label id="animations-select">
             <h3 className='animations-label'>Animations</h3>

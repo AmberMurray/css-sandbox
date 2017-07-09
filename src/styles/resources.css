@@ -1,14 +1,23 @@
-.animations-div {
+.animations-div,
+.buttons-div,
+.forms-div {
   width: 100%;
 }
 
-.animations-label {
+.animations-label,
+.buttons-label,
+.forms-label {
   text-align: center;
   margin: 5px;
+  padding-top: 3px;
+  font-family: 'Special Elite', cursive;
+  letter-spacing: 0.06em;
+  font-size: 25px;
 }
 
 select {
   width: 100%;
   height: 40px;
   background-color: #fff;
+  margin-top: 10px;
 }

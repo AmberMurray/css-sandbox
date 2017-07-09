@@ -41,10 +41,11 @@
   justify-content: space-around;
 }
 
-.animations-button,
-.buttons-button,
-.forms-button {
-  margin: 10px;
+.animations-select,
+.buttons-select,
+.forms-select {
+  margin: 0 auto;
   width: 50%;
   height: 20%;
+
 }

@@ -1,11 +1,30 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import '../styles/resources.css'
 
 class Buttons extends Component {
 
   render() {
     return (
       <div>
-        <h2>I am Buttons</h2>
+        <div className='buttons-div'>
+          <label id="buttons-select">
+            <h3 className='buttons-label'>Buttons</h3>
+          </label>
+        </div>
+        <div>
+          <select id="button">
+            <option
+              id="button-choice"
+              value="default"
+              disabled selected>Try It Out!
+            </option>
+            <option
+              id='press'
+              value="press"
+              >Press
+            </option>
+          </select>
+        </div>
       </div>
     )
   }
