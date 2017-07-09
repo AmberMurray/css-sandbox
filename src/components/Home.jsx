@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import '../styles/home.css'
-import { Link } from 'react-router-dom'
 import CodeEditor from './CodeEditor'
 import Animations from './Animations'
 import Buttons from './Buttons'
