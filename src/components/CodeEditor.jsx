@@ -13,8 +13,8 @@ class CodeEditor extends Component {
   }
 
   onChange(newValue, e) {
-    // const editor = this.ace.Editor; // The editor object is from Ace's API
-    // console.log(editor.getValue()); // Outputs the value of the editor
+    // const editor = this.ace.editor; // The editor object is from Ace's API
+    console.log(newValue); // Outputs the value of the editor
   }
 
   render() {

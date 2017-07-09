@@ -33,12 +33,14 @@
 #ace_content {
   margin: 10px;
   width: 33.33%;
+  border: 1px solid #737576;
 }
 
 .dropdowns-container {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  padding: 30px 0px;
 }
 
 .animations-select,
@@ -47,5 +49,4 @@
   margin: 0 auto;
   width: 50%;
   height: 20%;
-
 }

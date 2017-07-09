@@ -8,11 +8,12 @@
 .buttons-label,
 .forms-label {
   text-align: center;
-  margin: 5px;
+  margin: 2px;
   padding-top: 3px;
   font-family: 'Special Elite', cursive;
   letter-spacing: 0.06em;
   font-size: 25px;
+  color: #4c5051;
 }
 
 select {
@@ -20,4 +21,8 @@ select {
   height: 40px;
   background-color: #fff;
   margin-top: 10px;
+}
+
+option {
+  color: #4c5051;
 }
