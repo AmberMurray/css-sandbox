@@ -1,0 +1,35 @@
+.home-title {
+  font-family: 'Special Elite', cursive;
+  text-align: center;
+  letter-spacing: 0.06em;
+  font-size: 40px;
+  padding-top: 15px;
+}
+
+.home-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.dropdowns,
+.display,
+#ace_content {
+  margin: 10px;
+  width: 33.33%;
+}
+
+.dropdowns-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.animations-button,
+.buttons-button,
+.forms-button {
+  margin: 10px;
+  width: 50%;
+  height: 20%;
+}

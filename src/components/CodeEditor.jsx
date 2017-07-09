@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import AceEditor from 'react-ace';
+import React, { Component } from 'react'
+import AceEditor from 'react-ace'
 
-import 'brace/mode/css';
-import 'brace/theme/github';
+import 'brace/mode/css'
+import 'brace/theme/chrome'
 import 'brace/snippets/css'
 import 'brace/ext/language_tools'
 
@@ -21,13 +21,14 @@ class CodeEditor extends Component {
     return (
       <AceEditor
          mode="css"
-         theme="github"
+         theme="chrome"
          onChange={this.onChange}
-         name="UNIQUE_ID_OF_DIV"
-         editorProps={{$blockScrolling: 'Infinity'}}
+         name="ace_content"
+         editorProps={{$blockScrolling: Infinity}}
          enableBasicAutocompletion={true}
          enableLiveAutocompletion={true}
          enableSnippets={true}
+         width='95% '
       />
     )
   }
