@@ -1,11 +1,30 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import '../styles/resources.css'
 
 class Animations extends Component {
 
   render() {
     return (
-      <div>
-        <h2>I am Animations</h2>
+      <div className="animations-dropdown">
+        <div className='animations-div'>
+          <label id="animations-select">
+            <h3 className='animations-label'>Animations</h3>
+          </label>
+        </div>
+        <div>
+          <select id="animation">
+            <option
+              id="animation-choice"
+              value="default"
+              disabled selected>Play!
+            </option>
+            <option
+              id='bounce'
+              value="bounce"
+              >Bounce
+            </option>
+          </select>
+        </div>
       </div>
     )
   }

@@ -14,15 +14,15 @@ class Home extends Component {
         <h2 className='home-title'>CSS SandBox</h2>
         <div className='home-container'>
           <div className='dropdowns dropdowns-container'>
-            <button className='animations-button'>
-              <Link to='/animations'>Animations</Link>
-            </button>
-            <button className='buttons-button'>
+            <div className='animations-button'>
+              <Animations />
+            </div>
+            <div className='buttons-button'>
               <Link to='/buttons'>Buttons</Link>
-            </button>
-            <button className='forms-button'>
+            </div>
+            <div className='forms-button'>
               <Link to='/forms'>Forms</Link>
-            </button>
+            </div>
           </div>
           <div className='display'></div>
           <div className='code-display' id='ace_content'><CodeEditor /></div>

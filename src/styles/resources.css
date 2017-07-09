@@ -1,0 +1,14 @@
+.animations-div {
+  width: 100%;
+}
+
+.animations-label {
+  text-align: center;
+  margin: 5px;
+}
+
+select {
+  width: 100%;
+  height: 40px;
+  background-color: #fff;
+}
