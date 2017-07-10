@@ -10,7 +10,7 @@ class Display extends Component {
   render() {
     return (
       <div className='resource-display'>
-        <Form />
+        <Button />
       </div>
     )
   }

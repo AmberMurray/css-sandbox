@@ -36,10 +36,23 @@ select {
 
 .resource-display-text h1 {
   font-size: 50px;
-  color: #737576;
+  color: #4c5051;
 }
 
 .resource-display-form input {
   border: 1px solid #737576;
   height: 40px;
+}
+
+.resource-display-button button {
+  background-color: #fff;
+  border: 1px solid #737576;
+  height: 40px;
+  width: 150px;
+}
+
+.button-text {
+  font-family: 'Special Elite', cursive;
+  color: #4c5051;
+  font-size: 20px;
 }
