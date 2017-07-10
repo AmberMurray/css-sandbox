@@ -15,6 +15,7 @@ class Home extends Component {
       animations: 'Play!',
       animationComponent: null,
       buttons: 'Try It Out!',
+      buttonComponent: null,
       forms: 'Choose One!',
     }
 
@@ -32,6 +33,10 @@ class Home extends Component {
   }
 
   alterButtonState (value) {
+    let buttonComponent
+    if(value === 'press') {
+      buttonComponent = <Button />
+    }
     this.setState({ buttons: value })
   }
 
@@ -63,6 +68,8 @@ class Home extends Component {
             <Display
               animationComponent={this.state.animationComponent}
               animationClass={this.state.animations}
+              buttonComponent={this.state.buttonComponent}
+              buttonClass={this.state.buttons}
             />
           </div>
           <div className='code-display' id='ace_content'>
