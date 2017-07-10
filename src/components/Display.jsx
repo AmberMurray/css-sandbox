@@ -5,6 +5,9 @@ import Form from './Form'
 import Button from './Button'
 
 class Display extends Component {
+  constructor (props) {
+    super(props)
+  }
 
 
   render() {
