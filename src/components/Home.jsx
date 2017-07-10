@@ -15,23 +15,33 @@ class Home extends Component {
       buttons: 'Try It Out!',
       forms: 'Choose One!'
     }
+
+    this.alterAnimationState = this.alterAnimationState.bind(this)
+    this.alterFormsState = this.alterFormsState.bind(this)
   }
 
-  alterState () {
+  alterAnimationState (value) {
+    this.setState({ animations: value })
+  }
 
+  alterFormsState (value) {
+    this.setState({ forms: value })
   }
 
   render() {
+    console.log(this.state)
     return (
       <div>
-        <h2 className='home-title'>CSS SandBox</h2>
+        <h2 className='home-title'>CSS Sandbox</h2>
         <div className='home-container'>
           <div className='dropdowns dropdowns-container'>
             <div className='animations-select'>
-              <Animations />
+              <Animations
+                alterAnimationState={this.alterAnimationState}/>
             </div>
             <div className='buttons-select'>
-              <Buttons />
+              <Buttons
+                alterFormsState={this.alterFormsState}/>
             </div>
             <div className='forms-select'>
               <Forms />

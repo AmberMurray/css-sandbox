@@ -12,11 +12,11 @@ class Forms extends Component {
           </label>
         </div>
         <div>
-          <select id="form">
+          <select id="form" onChange={e => {this.props.alterFormsState(e.target.value)}}>
             <option
               id="form-choice"
-              value="default"
-              disabled selected>Choose One!
+              value="choose one"
+              selected>Choose One!
             </option>
             <option
               id='fun'

@@ -3,8 +3,6 @@ import '../styles/resources.css'
 
 class Animations extends Component {
 
-  //this will call the change method from HOME to make the change happen
-
   render() {
     return (
       <div>
@@ -14,11 +12,11 @@ class Animations extends Component {
           </label>
         </div>
         <div>
-          <select id="animation">
+          <select id="animation" onChange={e => {this.props.alterAnimationState(e.target.value)}}>
             <option
               id="animation-choice"
-              value="default"
-              disabled selected>Play!
+              value="play"
+              selected>Play!
             </option>
             <option
               id='bounce'
