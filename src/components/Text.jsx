@@ -5,7 +5,7 @@ class Text extends Component {
 
   render() {
     return (
-      <div className='code-display-text'>
+      <div className='resource-display-text'>
         <h1>Hello</h1>
       </div>
     )

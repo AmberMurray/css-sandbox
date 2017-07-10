@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import '../styles/home.css'
+import Display from './Display'
 import CodeEditor from './CodeEditor'
 import Animations from './Animations'
 import Buttons from './Buttons'
 import Forms from './Forms'
-import Text from './Text'
 
 class Home extends Component {
   constructor (props) {
@@ -37,8 +37,12 @@ class Home extends Component {
               <Forms />
             </div>
           </div>
-          <div className='display'><Text /></div>
-          <div className='code-display' id='ace_content'><CodeEditor /></div>
+          <div className='display'>
+            <Display />
+          </div>
+          <div className='code-display' id='ace_content'>
+            <CodeEditor />
+          </div>
         </div>
       </div>
     )

@@ -21,4 +21,20 @@ select {
   height: 40px;
   background-color: #fff;
   margin-top: 10px;
-} 
+}
+
+.resource-display {
+  height: 100%;
+  width: 100%;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: 'Special Elite', cursive;
+  vertical-align: middle;
+}
+
+.resource-display-text h1 {
+  font-size: 50px;
+  color: #737576;
+}
