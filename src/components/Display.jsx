@@ -8,16 +8,20 @@ class Display extends Component {
   constructor (props) {
     super(props)
 
-    this.state = {
-      
-    }
+    // this.state = {
+    //
+    // }
   }
 
 
   render() {
+    console.log(this.props);
     return (
       <div className='resource-display'>
-
+        { this.props.animationComponent ?
+          React.cloneElement(this.props.animationComponent, { className: this.props.animationClass})
+          : null
+        }
       </div>
     )
   }

@@ -5,6 +5,7 @@ import CodeEditor from './CodeEditor'
 import Animations from './Animations'
 import Buttons from './Buttons'
 import Forms from './Forms'
+import Text from './Text'
 
 class Home extends Component {
   constructor (props) {
@@ -12,17 +13,22 @@ class Home extends Component {
 
     this.state = {
       animations: 'Play!',
+      animationComponent: null,
       buttons: 'Try It Out!',
       forms: 'Choose One!',
-      display: {},
     }
 
     this.alterAnimationState = this.alterAnimationState.bind(this)
+    this.alterButtonState = this.alterButtonState.bind(this)
     this.alterFormState = this.alterFormState.bind(this)
   }
 
   alterAnimationState (value) {
-    this.setState({ animations: value })
+    let animationComponent
+    if(value === 'bounce') {
+      animationComponent = <Text />
+    }
+    this.setState({ animations: value, animationComponent })
   }
 
   alterButtonState (value) {
@@ -46,7 +52,7 @@ class Home extends Component {
             </div>
             <div className='buttons-select'>
               <Buttons
-                alterFormState={this.alterButtonState}/>
+                alterButtonState={this.alterButtonState}/>
             </div>
             <div className='forms-select'>
               <Forms
@@ -54,7 +60,10 @@ class Home extends Component {
             </div>
           </div>
           <div className='display'>
-            <Display />
+            <Display
+              animationComponent={this.state.animationComponent}
+              animationClass={this.state.animations}
+            />
           </div>
           <div className='code-display' id='ace_content'>
             <CodeEditor />
