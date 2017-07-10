@@ -3,6 +3,8 @@ import '../styles/resources.css'
 
 class Animations extends Component {
 
+  //this will call the change method from HOME to make the change happen
+
   render() {
     return (
       <div>

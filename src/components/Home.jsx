@@ -4,8 +4,22 @@ import CodeEditor from './CodeEditor'
 import Animations from './Animations'
 import Buttons from './Buttons'
 import Forms from './Forms'
+import Text from './Text'
 
 class Home extends Component {
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      animations: 'Play!',
+      buttons: 'Try It Out!',
+      forms: 'Choose One!'
+    }
+  }
+
+  alterState () {
+
+  }
 
   render() {
     return (
@@ -23,7 +37,7 @@ class Home extends Component {
               <Forms />
             </div>
           </div>
-          <div className='display'></div>
+          <div className='display'><Text /></div>
           <div className='code-display' id='ace_content'><CodeEditor /></div>
         </div>
       </div>
