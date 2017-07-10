@@ -12,7 +12,7 @@ class Buttons extends Component {
           </label>
         </div>
         <div>
-          <select id="button">
+          <select id="button" onChange={e => {this.props.alterButtonState(e.target.value)}}>
             <option
               id="button-choice"
               value="try it out"

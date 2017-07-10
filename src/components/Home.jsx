@@ -13,18 +13,23 @@ class Home extends Component {
     this.state = {
       animations: 'Play!',
       buttons: 'Try It Out!',
-      forms: 'Choose One!'
+      forms: 'Choose One!',
+      display: {},
     }
 
     this.alterAnimationState = this.alterAnimationState.bind(this)
-    this.alterFormsState = this.alterFormsState.bind(this)
+    this.alterFormState = this.alterFormState.bind(this)
   }
 
   alterAnimationState (value) {
     this.setState({ animations: value })
   }
 
-  alterFormsState (value) {
+  alterButtonState (value) {
+    this.setState({ buttons: value })
+  }
+
+  alterFormState (value) {
     this.setState({ forms: value })
   }
 
@@ -41,10 +46,11 @@ class Home extends Component {
             </div>
             <div className='buttons-select'>
               <Buttons
-                alterFormsState={this.alterFormsState}/>
+                alterFormState={this.alterButtonState}/>
             </div>
             <div className='forms-select'>
-              <Forms />
+              <Forms
+              alterFormState={this.alterFormState}/>
             </div>
           </div>
           <div className='display'>

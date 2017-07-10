@@ -12,7 +12,7 @@ class Forms extends Component {
           </label>
         </div>
         <div>
-          <select id="form" onChange={e => {this.props.alterFormsState(e.target.value)}}>
+          <select id="form" onChange={e => {this.props.alterFormState(e.target.value)}}>
             <option
               id="form-choice"
               value="choose one"
