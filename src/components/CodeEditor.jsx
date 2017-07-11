@@ -11,11 +11,11 @@ class CodeEditor extends Component {
   constructor(props) {
     super(props)
 
-    this.onChange = this.onChange.bind(this)
+    this.onSubmit = this.onSubmit.bind(this)
   }
 
-  onChange(newValue, e) {
-    e.preventDefault  
+
+  onSubmit(newValue, e) {
     document.styleSheets[10].deleteRule[0]
     document.styleSheets[10].addRule(newValue)
 
@@ -29,7 +29,7 @@ class CodeEditor extends Component {
       <AceEditor
          mode="css"
          theme="chrome"
-         onChange={this.onChange}
+         onSubmit={this.onChange}
          name="ace_content"
          editorProps={{$blockScrolling: Infinity}}
          enableBasicAutocompletion={true}

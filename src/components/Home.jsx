@@ -41,7 +41,6 @@ class Home extends Component {
       this.alterButtonState()
       this.alterFormState()
       animationComponent = <Text />
-      console.log(cssText)
       animationCssText = cssText
     } else {
       animationComponent = null
