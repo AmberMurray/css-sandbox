@@ -16,7 +16,7 @@ class Buttons extends Component {
             <option
               id="button-choice"
               value="try it out"
-              selected>Try It Out!
+              >Try It Out!
             </option>
             <option
               id='press'

@@ -16,7 +16,7 @@ class Animations extends Component {
             <option
               id="animation-choice"
               value="play"
-              selected>Play!
+              >Play!
             </option>
             <option
               id='bounce'

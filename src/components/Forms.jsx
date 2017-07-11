@@ -16,7 +16,7 @@ class Forms extends Component {
             <option
               id="form-choice"
               value="choose one"
-              selected>Choose One!
+              >Choose One!
             </option>
             <option
               id='fun'
