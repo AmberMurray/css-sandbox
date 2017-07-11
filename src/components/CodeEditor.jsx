@@ -8,7 +8,9 @@ import 'brace/ext/language_tools'
 
 
 class CodeEditor extends Component {
-  contructor() {
+  constructor(props) {
+    super(props)
+
     this.onChange = this.onChange.bind(this)
   }
 
@@ -18,6 +20,7 @@ class CodeEditor extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <AceEditor
          mode="css"
@@ -28,6 +31,8 @@ class CodeEditor extends Component {
          enableBasicAutocompletion={true}
          enableLiveAutocompletion={true}
          enableSnippets={true}
+         showGutter={true}
+         value={this.props.className}
          width='95% '
       />
     )

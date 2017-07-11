@@ -4,6 +4,10 @@ import '../styles/resources.css'
 class Display extends Component {
   constructor (props) {
     super(props)
+
+    this.state = {
+      currentClass: this.props.animationClass || this.props.buttonClass || this.props.formClass,
+    }
   }
 
   render() {
@@ -11,7 +15,7 @@ class Display extends Component {
     return (
       <div className='resource-display'>
         { this.props.animationComponent ?
-          React.cloneElement(this.props.animationComponent, { className: this.props.animationClass})
+          React.cloneElement(this.props.animationComponent, { className: this.props.animationClass, currentClass: this.props.animationClass})
           : null
         }
         {

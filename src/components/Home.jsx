@@ -30,7 +30,11 @@ class Home extends Component {
   alterAnimationState (value) {
     let animationComponent
     if(value === 'bounce') {
+      this.alterButtonState()
+      this.alterFormState()
       animationComponent = <Text />
+    } else {
+      animationComponent = null
     }
     this.setState({ animations: value, animationComponent })
   }
@@ -38,7 +42,11 @@ class Home extends Component {
   alterButtonState (value) {
     let buttonComponent
     if(value === 'press') {
+      this.alterAnimationState()
+      this.alterFormState()
       buttonComponent = <Button />
+    } else {
+      buttonComponent = null
     }
     this.setState({ buttons: value, buttonComponent })
   }
@@ -46,7 +54,11 @@ class Home extends Component {
   alterFormState (value) {
     let formComponent
     if(value === 'fun') {
+      this.alterAnimationState()
+      this.alterButtonState()
       formComponent = <Form />
+    }  else {
+      formComponent = null
     }
     this.setState({ forms: value, formComponent })
   }
@@ -81,7 +93,11 @@ class Home extends Component {
             />
           </div>
           <div className='code-display' id='ace_content'>
-            <CodeEditor />
+            <CodeEditor
+            animationClass={this.state.animations}
+            buttonClass={this.state.buttons}
+            formClass={this.state.forms}
+            />
           </div>
         </div>
       </div>
