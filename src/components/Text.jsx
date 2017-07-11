@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import '../library/animations.css'
 import '../styles/resources.css'
 
 class Text extends Component {
@@ -9,8 +10,8 @@ class Text extends Component {
   render() {
     console.log(this.props);
     return (
-      <div className={'resource-display-text ' + this.props.className}>
-        <h1>Hello</h1>
+      <div className={'resource-display-text'}>
+        <h1><span className={this.props.className}>Hello</span></h1>
       </div>
     )
   }

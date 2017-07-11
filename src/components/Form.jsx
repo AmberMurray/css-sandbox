@@ -6,7 +6,7 @@ class Form extends Component {
   render() {
     return (
       <div className='resource-display-form'>
-        <input className=''></input>
+        <input className={this.props.className}></input>
       </div>
     )
   }

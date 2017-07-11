@@ -19,6 +19,7 @@ class Home extends Component {
       buttons: 'Try It Out!',
       buttonComponent: null,
       forms: 'Choose One!',
+      formComponent: null,
     }
 
     this.alterAnimationState = this.alterAnimationState.bind(this)
@@ -43,7 +44,11 @@ class Home extends Component {
   }
 
   alterFormState (value) {
-    this.setState({ forms: value })
+    let formComponent
+    if(value === 'fun') {
+      formComponent = <Form />
+    }
+    this.setState({ forms: value, formComponent })
   }
 
   render() {
@@ -72,6 +77,8 @@ class Home extends Component {
               animationClass={this.state.animations}
               buttonComponent={this.state.buttonComponent}
               buttonClass={this.state.buttons}
+              formComponent={this.state.formComponent}
+              formClass={this.state.forms}
             />
           </div>
           <div className='code-display' id='ace_content'>
