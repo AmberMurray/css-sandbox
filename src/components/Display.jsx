@@ -22,6 +22,11 @@ class Display extends Component {
           React.cloneElement(this.props.animationComponent, { className: this.props.animationClass})
           : null
         }
+        {
+        this.props.buttonComponent ?
+         React.cloneElement(this.props.buttonComponent, { className: this.props.buttonsClass})
+         : null
+       }
       </div>
     )
   }

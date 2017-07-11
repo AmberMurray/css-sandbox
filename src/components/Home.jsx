@@ -6,6 +6,8 @@ import Animations from './Animations'
 import Buttons from './Buttons'
 import Forms from './Forms'
 import Text from './Text'
+import Button from './Button'
+import Form from './Form'
 
 class Home extends Component {
   constructor (props) {
@@ -37,7 +39,7 @@ class Home extends Component {
     if(value === 'press') {
       buttonComponent = <Button />
     }
-    this.setState({ buttons: value })
+    this.setState({ buttons: value, buttonComponent })
   }
 
   alterFormState (value) {
