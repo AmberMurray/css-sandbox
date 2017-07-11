@@ -32,7 +32,7 @@ class CodeEditor extends Component {
          enableLiveAutocompletion={true}
          enableSnippets={true}
          showGutter={true}
-         value={this.props.className}
+         value={this.props.currentClass}
          width='95% '
       />
     )

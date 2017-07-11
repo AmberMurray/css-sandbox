@@ -20,7 +20,8 @@ class Home extends Component {
       buttonComponent: null,
       forms: 'Choose One!',
       formComponent: null,
-    }
+      currentClass: this.props.animationClass || this.props.buttonClass || this.props.formClass,
+      }
 
     this.alterAnimationState = this.alterAnimationState.bind(this)
     this.alterButtonState = this.alterButtonState.bind(this)
@@ -36,7 +37,7 @@ class Home extends Component {
     } else {
       animationComponent = null
     }
-    this.setState({ animations: value, animationComponent })
+    this.setState({ animations: value, animationComponent, currentClass: value })
   }
 
   alterButtonState (value) {
@@ -48,7 +49,7 @@ class Home extends Component {
     } else {
       buttonComponent = null
     }
-    this.setState({ buttons: value, buttonComponent })
+    this.setState({ buttons: value, buttonComponent, currentClass: value })
   }
 
   alterFormState (value) {
@@ -60,7 +61,7 @@ class Home extends Component {
     }  else {
       formComponent = null
     }
-    this.setState({ forms: value, formComponent })
+    this.setState({ forms: value, formComponent, currentClass: value })
   }
 
   render() {
@@ -94,9 +95,13 @@ class Home extends Component {
           </div>
           <div className='code-display' id='ace_content'>
             <CodeEditor
-            animationClass={this.state.animations}
-            buttonClass={this.state.buttons}
-            formClass={this.state.forms}
+              animationComponent={this.state.animationComponent}
+              animationClass={this.state.animations}
+              buttonComponent={this.state.buttonComponent}
+              buttonClass={this.state.buttons}
+              formComponent={this.state.formComponent}
+              formClass={this.state.forms}
+              currentClass={this.state.currentClass}
             />
           </div>
         </div>
