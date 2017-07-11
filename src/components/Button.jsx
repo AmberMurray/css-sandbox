@@ -9,7 +9,7 @@ class Button extends Component {
     console.log(this.props.className);
     return (
       <div className='resource-display-button '>
-        <button className={this.props.className}><span className='button-text'>Button</span></button>
+        <button id={this.props.className}><span className='button-text'>Button</span></button>
       </div>
     )
   }
