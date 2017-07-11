@@ -29,7 +29,7 @@ class CodeEditor extends Component {
       <AceEditor
          mode="css"
          theme="chrome"
-         onSubmit={this.onChange}
+         onSubmit={this.onSubmit}
          name="ace_content"
          editorProps={{$blockScrolling: Infinity}}
          enableBasicAutocompletion={true}
