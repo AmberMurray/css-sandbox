@@ -15,7 +15,8 @@ class Home extends Component {
 
     this.state = {
       animations: 'Play!',
-      animationComponent: null,
+      animationComponent: <Text />,
+      animationCssText: '',
       buttons: 'Try It Out!',
       buttonComponent: null,
       forms: 'Choose One!',
@@ -26,18 +27,26 @@ class Home extends Component {
     this.alterAnimationState = this.alterAnimationState.bind(this)
     this.alterButtonState = this.alterButtonState.bind(this)
     this.alterFormState = this.alterFormState.bind(this)
+    this.removeButton = this.removeButton.bind(this)
   }
 
-  alterAnimationState (value) {
+  removeButton () {
+    console.log('hello');
+  }
+
+  alterAnimationState (value, cssText) {
     let animationComponent
+    let animationCssText
     if(value === 'bounce') {
       this.alterButtonState()
       this.alterFormState()
       animationComponent = <Text />
+      console.log(cssText)
+      animationCssText = cssText
     } else {
       animationComponent = null
     }
-    this.setState({ animations: value, animationComponent, currentClass: value })
+    this.setState({ animations: value, animationComponent, currentClass: value, animationCssText: cssText })
   }
 
   alterButtonState (value) {
@@ -97,6 +106,7 @@ class Home extends Component {
             <CodeEditor
               animationComponent={this.state.animationComponent}
               animationClass={this.state.animations}
+              animationCssText={this.state.animationCssText}
               buttonComponent={this.state.buttonComponent}
               buttonClass={this.state.buttons}
               formComponent={this.state.formComponent}

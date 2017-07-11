@@ -12,7 +12,10 @@ class Animations extends Component {
           </label>
         </div>
         <div>
-          <select id="animation" onChange={e => {this.props.alterAnimationState(e.target.value)}}>
+          <select id="animation" onChange={e => {
+            let cssText = document.styleSheets[10].cssRules[0].cssText
+            console.log(document.styleSheets[10].cssRules[0].cssText);
+            this.props.alterAnimationState(e.target.value, cssText)}}>
             <option
               id="animation-choice"
               value="play"

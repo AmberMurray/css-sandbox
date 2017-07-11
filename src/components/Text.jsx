@@ -8,7 +8,7 @@ class Text extends Component {
   }
 
   render() {
-    console.log(this.props);
+    
     return (
       <div className={'resource-display-text'}>
         <h1><span className={this.props.className}>Hello</span></h1>

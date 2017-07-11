@@ -15,12 +15,16 @@ class CodeEditor extends Component {
   }
 
   onChange(newValue, e) {
+    e.preventDefault  
+    document.styleSheets[10].deleteRule[0]
+    document.styleSheets[10].addRule(newValue)
+
+
+    console.log(document.styleSheets[10].cssRules[0].cssText);
     // const editor = this.ace.editor; // The editor object is from Ace's API
-    console.log(newValue); // Outputs the value of the editor
   }
 
   render() {
-    console.log(this.props);
     return (
       <AceEditor
          mode="css"
@@ -32,7 +36,7 @@ class CodeEditor extends Component {
          enableLiveAutocompletion={true}
          enableSnippets={true}
          showGutter={true}
-         value={this.props.currentClass}
+         value={this.props.animationCssText}
          width='95% '
       />
     )
