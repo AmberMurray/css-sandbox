@@ -24,7 +24,7 @@ class Display extends Component {
         }
         {
         this.props.buttonComponent ?
-         React.cloneElement(this.props.buttonComponent, { className: this.props.buttonsClass})
+         React.cloneElement(this.props.buttonComponent, { className: this.props.buttonClass})
          : null
        }
        {

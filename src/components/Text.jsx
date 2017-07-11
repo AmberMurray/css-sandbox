@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import '../library/animations.css'
 import '../styles/resources.css'
+import '../library/animations.css'
 
 class Text extends Component {
   constructor (props) {

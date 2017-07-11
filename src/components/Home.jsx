@@ -52,7 +52,6 @@ class Home extends Component {
   }
 
   render() {
-    console.log(this.state)
     return (
       <div>
         <h2 className='home-title'>CSS Sandbox</h2>
