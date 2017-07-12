@@ -73,16 +73,26 @@ class Home extends Component {
 
     for(let i = 0; i < styleSheets.length; i++) {
 	    if(styleSheets[i].cssRules) {
-        if(styleSheets[i].cssRules[0].selectorText === dotClass | styleSheets[i].cssRules[0].selectorText === hash) {
+        console.log(styleSheets[i].cssRules);
+        if(styleSheets[i].cssRules[0].selectorText === dotClass || styleSheets[i].cssRules[0].selectorText === hash) {
           let styleSheetText = styleSheets[i].cssRules[0].cssText
+          console.log(styleSheetText);
           return styleSheetText
         }
       }
     }
   }
 
+  // getStyleSheets (value) {
+  //   let newStyleSheet = new CSSStyleSheet()
+  //   console.log(newStyleSheet);
+  //   newStyleSheet.insert('.bounce { color: yellow }')
+  //   return newStyleSheet
+  //
+  // }
+
   render() {
-    
+
     return (
       <div>
         <h2 className='home-title'>CSS Sandbox</h2>
