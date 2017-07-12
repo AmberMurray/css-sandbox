@@ -11,34 +11,49 @@ class CodeEditor extends Component {
   constructor(props) {
     super(props)
 
-    this.onSubmit = this.onSubmit.bind(this)
+    this.state = {
+      newValue: ''
+    }
+
+    this.onChange = this.onChange.bind(this)
+    this.handleClick = this.handleClick.bind(this)
   }
 
+  onChange (newValue, e) {
+    console.log(newValue)
 
-  onSubmit(newValue, e) {
+  }
+
+  handleClick(newValue, e) {
+    console.log('handle click here');
+    console.log(newValue);
     document.styleSheets[10].deleteRule[0]
     document.styleSheets[10].addRule(newValue)
 
 
     console.log(document.styleSheets[10].cssRules[0].cssText);
-    // const editor = this.ace.editor; // The editor object is from Ace's API
   }
 
   render() {
     return (
-      <AceEditor
-         mode="css"
-         theme="chrome"
-         onSubmit={this.onSubmit}
-         name="ace_content"
-         editorProps={{$blockScrolling: Infinity}}
-         enableBasicAutocompletion={true}
-         enableLiveAutocompletion={true}
-         enableSnippets={true}
-         showGutter={true}
-         value={this.props.animationCssText}
-         width='95% '
-      />
+      <div>
+        <AceEditor
+           mode="css"
+           theme="chrome"
+           name="ace_content"
+           onChange={this.onChange}
+           editorProps={{$blockScrolling: Infinity}}
+           enableBasicAutocompletion={true}
+           enableLiveAutocompletion={true}
+           enableSnippets={true}
+           showGutter={true}
+           value={this.props.animationCssText}
+           width='94% '
+        />
+        <div className='submit-div-container'>
+          <button className='resource-display-button submit-button' onClick={this.handleClick}><span className='button-text'>Submit</span></button>
+        </div>
+      </div>
     )
   }
 }

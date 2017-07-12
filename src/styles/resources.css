@@ -44,12 +44,25 @@ select {
   height: 50px;
 }
 
-.resource-display-button button {
+.resource-display-button {
   background-color: #fff;
   border: 1px solid #737576;
   height: 60px;
   width: 200px;
 }
+
+.submit-div-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.submit-button {
+  height: 30px;
+  width: 100px;
+  margin: -3px 0px 5px;
+}
+
 
 .button-text {
   font-family: 'Special Elite', cursive;
