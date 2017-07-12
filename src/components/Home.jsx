@@ -27,7 +27,6 @@ class Home extends Component {
     this.alterAnimationState = this.alterAnimationState.bind(this)
     this.alterButtonState = this.alterButtonState.bind(this)
     this.alterFormState = this.alterFormState.bind(this)
-    this.removeButton = this.removeButton.bind(this)
   }
 
   alterAnimationState (value, cssText) {
