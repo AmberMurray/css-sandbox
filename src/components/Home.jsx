@@ -16,7 +16,7 @@ class Home extends Component {
     this.state = {
       animations: 'Play!',
       animationComponent: <Text />,
-      animationCssText: '',
+      text: '',
       buttons: 'Try It Out!',
       buttonComponent: null,
       forms: 'Choose One!',
@@ -31,19 +31,17 @@ class Home extends Component {
 
   alterAnimationState (value, cssText) {
     let animationComponent
-    let animationCssText
     if(value === 'bounce') {
       this.alterButtonState()
       this.alterFormState()
       animationComponent = <Text />
-      animationCssText = cssText
     } else {
       animationComponent = null
     }
-    this.setState({ animations: value, animationComponent, currentClass: value, animationCssText: cssText })
+    this.setState({ animations: value, animationComponent, currentClass: value, text: cssText })
   }
 
-  alterButtonState (value) {
+  alterButtonState (value, cssText) {
     let buttonComponent
     if(value === 'press') {
       this.alterAnimationState()
@@ -52,10 +50,10 @@ class Home extends Component {
     } else {
       buttonComponent = null
     }
-    this.setState({ buttons: value, buttonComponent, currentClass: value })
+    this.setState({ buttons: value, buttonComponent, currentClass: value, text:cssText })
   }
 
-  alterFormState (value) {
+  alterFormState (value, cssText) {
     let formComponent
     if(value === 'fun') {
       this.alterAnimationState()
@@ -64,7 +62,7 @@ class Home extends Component {
     }  else {
       formComponent = null
     }
-    this.setState({ forms: value, formComponent, currentClass: value })
+    this.setState({ forms: value, formComponent, currentClass: value, text: cssText })
   }
 
   render() {
@@ -100,7 +98,7 @@ class Home extends Component {
             <CodeEditor
               animationComponent={this.state.animationComponent}
               animationClass={this.state.animations}
-              animationCssText={this.state.animationCssText}
+              text={this.state.text}
               buttonComponent={this.state.buttonComponent}
               buttonClass={this.state.buttons}
               formComponent={this.state.formComponent}

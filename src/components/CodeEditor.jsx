@@ -21,7 +21,7 @@ class CodeEditor extends Component {
 
   componentWillReceiveProps(nextProps) {
     console.log('Next props', nextProps);
-    this.setState({ newValue: nextProps.animationCssText })
+    this.setState({ newValue: nextProps.text })
   }
 
   onChange (newValue) {
@@ -32,10 +32,10 @@ class CodeEditor extends Component {
     try {
       console.log('handle click here');
       console.log(this.state.newValue);
-      document.styleSheets[10].insertRule(this.state.newValue, 1)
-      document.styleSheets[10].removeRule()
+      document.styleSheets[12].insertRule(this.state.newValue, 1)
+      document.styleSheets[12].removeRule()
 
-      console.log(document.styleSheets[10].cssRules[0].cssText);
+      console.log(document.styleSheets[12].cssRules[0].cssText);
     }
     catch (error) {
       console.log('You suck because ' + error);
