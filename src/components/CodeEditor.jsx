@@ -32,8 +32,8 @@ class CodeEditor extends Component {
     try {
       console.log('handle click here');
       console.log(this.state.newValue);
-      document.styleSheets[10].deleteRule[0]
       document.styleSheets[10].insertRule(this.state.newValue, 1)
+      document.styleSheets[10].removeRule()
 
       console.log(document.styleSheets[10].cssRules[0].cssText);
     }
