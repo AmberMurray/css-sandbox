@@ -27,6 +27,7 @@ class Home extends Component {
     this.alterAnimationState = this.alterAnimationState.bind(this)
     this.alterButtonState = this.alterButtonState.bind(this)
     this.alterFormState = this.alterFormState.bind(this)
+    this.getStyleSheets = this.getStyleSheets.bind(this)
   }
 
   alterAnimationState (value, cssText) {
@@ -65,6 +66,21 @@ class Home extends Component {
     this.setState({ forms: value, formComponent, currentClass: value, text: cssText })
   }
 
+  getStyleSheets (value) {
+    let styleSheets = document.styleSheets
+    let newClass = '.' + value
+
+    for(let i = 0; i < styleSheets.length; i++) {
+	    if(styleSheets[i].cssRules) {
+        if(styleSheets[i].cssRules[0].selectorText === newClass) {
+          let styleSheetText = styleSheets[i].cssRules[0].cssText
+          return styleSheetText
+        }
+      }
+    }
+  }
+
+
   render() {
     return (
       <div>
@@ -73,15 +89,18 @@ class Home extends Component {
           <div className='dropdowns dropdowns-container'>
             <div className='animations-select'>
               <Animations
-                alterAnimationState={this.alterAnimationState}/>
+                alterAnimationState={this.alterAnimationState}
+                getStyleSheets={this.getStyleSheets}/>
             </div>
             <div className='buttons-select'>
               <Buttons
-                alterButtonState={this.alterButtonState}/>
+                alterButtonState={this.alterButtonState}
+                getStyleSheets={this.getStyleSheets}/>
             </div>
             <div className='forms-select'>
               <Forms
-              alterFormState={this.alterFormState}/>
+              alterFormState={this.alterFormState}
+              getStyleSheets={this.getStyleSheets}/>
             </div>
           </div>
           <div className='display'>

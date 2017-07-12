@@ -13,8 +13,7 @@ class Buttons extends Component {
         </div>
         <div>
           <select id="button" onChange={e => {
-            let cssText = document.styleSheets[11].cssRules[0].cssText
-            console.log(cssText);
+            let cssText = this.props.getStyleSheets(e.target.value)
             this.props.alterButtonState(e.target.value, cssText )}}>
             <option
               id="button-choice"

@@ -13,8 +13,7 @@ class Animations extends Component {
         </div>
         <div>
           <select id="animation" onChange={e => {
-            let cssText = document.styleSheets[10].cssRules[0].cssText
-            console.log(cssText);
+            let cssText = this.props.getStyleSheets(e.target.value)
             this.props.alterAnimationState(e.target.value, cssText)}}>
             <option
               id="animation-choice"

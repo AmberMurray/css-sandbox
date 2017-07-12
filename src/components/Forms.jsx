@@ -14,8 +14,7 @@ class Forms extends Component {
         </div>
         <div>
           <select id="form" onChange={e => {
-            let cssText = document.styleSheets[12].cssRules[0].cssText
-            console.log(cssText);
+            let cssText = this.props.getStyleSheets(e.target.value)
             this.props.alterFormState(e.target.value, cssText)}}>
             <option
               id="form-choice"
