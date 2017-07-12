@@ -30,10 +30,6 @@ class Home extends Component {
     this.removeButton = this.removeButton.bind(this)
   }
 
-  removeButton () {
-    console.log('hello');
-  }
-
   alterAnimationState (value, cssText) {
     let animationComponent
     let animationCssText

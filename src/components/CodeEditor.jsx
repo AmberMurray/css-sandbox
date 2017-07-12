@@ -19,22 +19,32 @@ class CodeEditor extends Component {
     this.handleClick = this.handleClick.bind(this)
   }
 
-  onChange (newValue, e) {
-    console.log(newValue)
-
+  componentWillReceiveProps(nextProps) {
+    console.log('Next props', nextProps);
+    this.setState({ newValue: nextProps.animationCssText })
   }
 
-  handleClick(newValue, e) {
-    console.log('handle click here');
-    console.log(newValue);
-    document.styleSheets[10].deleteRule[0]
-    document.styleSheets[10].addRule(newValue)
+  onChange (newValue) {
+    this.setState({ newValue })
+  }
 
+  handleClick(e) {
+    try {
+      console.log('handle click here');
+      console.log(this.state.newValue);
+      document.styleSheets[10].deleteRule[0]
+      document.styleSheets[10].insertRule(this.state.newValue, 1)
 
-    console.log(document.styleSheets[10].cssRules[0].cssText);
+      console.log(document.styleSheets[10].cssRules[0].cssText);
+    }
+    catch (error) {
+      console.log('You suck because ' + error);
+    }
   }
 
   render() {
+    console.log(this.props)
+    console.log(this.state)
     return (
       <div>
         <AceEditor
@@ -47,7 +57,7 @@ class CodeEditor extends Component {
            enableLiveAutocompletion={true}
            enableSnippets={true}
            showGutter={true}
-           value={this.props.animationCssText}
+           value={this.state.newValue}
            width='94% '
         />
         <div className='submit-div-container'>
