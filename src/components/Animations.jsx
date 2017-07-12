@@ -4,6 +4,7 @@ import '../styles/resources.css'
 class Animations extends Component {
 
   render() {
+    
     return (
       <div>
         <div className='animations-div'>

@@ -68,11 +68,12 @@ class Home extends Component {
 
   getStyleSheets (value) {
     let styleSheets = document.styleSheets
-    let newClass = '.' + value
+    let dotClass = '.' + value
+    let hash = '#' + value
 
     for(let i = 0; i < styleSheets.length; i++) {
 	    if(styleSheets[i].cssRules) {
-        if(styleSheets[i].cssRules[0].selectorText === newClass) {
+        if(styleSheets[i].cssRules[0].selectorText === dotClass | styleSheets[i].cssRules[0].selectorText === hash) {
           let styleSheetText = styleSheets[i].cssRules[0].cssText
           return styleSheetText
         }
@@ -80,8 +81,8 @@ class Home extends Component {
     }
   }
 
-
   render() {
+    
     return (
       <div>
         <h2 className='home-title'>CSS Sandbox</h2>
@@ -90,17 +91,20 @@ class Home extends Component {
             <div className='animations-select'>
               <Animations
                 alterAnimationState={this.alterAnimationState}
-                getStyleSheets={this.getStyleSheets}/>
+                getStyleSheets={this.getStyleSheets}
+              />
             </div>
             <div className='buttons-select'>
               <Buttons
                 alterButtonState={this.alterButtonState}
-                getStyleSheets={this.getStyleSheets}/>
+                getStyleSheets={this.getStyleSheets}
+              />
             </div>
             <div className='forms-select'>
               <Forms
               alterFormState={this.alterFormState}
-              getStyleSheets={this.getStyleSheets}/>
+              getStyleSheets={this.getStyleSheets}
+              />
             </div>
           </div>
           <div className='display'>
@@ -123,6 +127,7 @@ class Home extends Component {
               formComponent={this.state.formComponent}
               formClass={this.state.forms}
               currentClass={this.state.currentClass}
+              getStyleSheets={this.getStyleSheets}
             />
           </div>
         </div>

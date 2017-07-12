@@ -30,8 +30,7 @@ class CodeEditor extends Component {
 
   handleClick(e) {
     try {
-      console.log('handle click here');
-      console.log(this.state.newValue);
+      console.log(document.styleSheets);
       document.styleSheets[12].insertRule(this.state.newValue, 1)
       document.styleSheets[12].removeRule()
 
@@ -43,8 +42,7 @@ class CodeEditor extends Component {
   }
 
   render() {
-    console.log(this.props)
-    console.log(this.state)
+
     return (
       <div>
         <AceEditor

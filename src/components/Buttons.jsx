@@ -4,6 +4,7 @@ import '../styles/resources.css'
 class Buttons extends Component {
 
   render() {
+    
     return (
       <div>
         <div className='buttons-div'>

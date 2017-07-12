@@ -5,6 +5,7 @@ import '../styles/resources.css'
 class Forms extends Component {
 
   render() {
+    
     return (
       <div>
         <div className='forms-div'>
