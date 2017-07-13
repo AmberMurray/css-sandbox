@@ -47,6 +47,7 @@ class Home extends Component {
     if(value === 'press') {
       this.alterAnimationState()
       this.alterFormState()
+      console.log('this is', cssText);
       buttonComponent = <Button />
     } else {
       buttonComponent = null
@@ -67,7 +68,7 @@ class Home extends Component {
   }
 
   getStyleSheets (value) {
-    // let styleSheets = document.styleSheets
+    let styleSheets = document.styleSheets
     let styleSheetsRules = document.styleSheets[2].cssRules
     let dotClass = '.' + value
     let hash = '#' + value
