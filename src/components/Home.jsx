@@ -87,9 +87,10 @@ class Home extends Component {
     // }
     console.log('Welcome to getStyleSheets!');
     for(let i = styleSheetsRules.length -1; i > styleSheetsRules.length; i--) {
+      console.log('this is i ', i);
       console.log('These are stylesheetRules ', styleSheetsRules[i]);
-      if(styleSheetsRules.selectorText === dotClass) {
-        let styleSheetText = styleSheetsRules.cssText
+      if(styleSheetsRules[i].selectorText === dotClass) {
+        let styleSheetText = styleSheetsRules[i].cssText
         console.log(styleSheetText);
         return styleSheetText
       }
