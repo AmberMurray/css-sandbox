@@ -90,7 +90,16 @@ class Home extends Component {
     console.log('styleSheetsRules[18]: ', styleSheetsRules[18]);
     console.log('styleSheetsRules[18].cssText: ', styleSheetsRules[18].cssText);
     console.log('styleSheetsRules[18].selectorText: ' + styleSheetsRules[18].selectorText);
-    for(let i = styleSheetsRules.length -1; i > styleSheetsRules.length; i--) {
+    // for(let i = styleSheetsRules.length -1; i > styleSheetsRules.length; i--) {
+    //   console.log('this is i ', i);
+    //   console.log('These are stylesheetRules ', styleSheetsRules[i]);
+    //   if(styleSheetsRules[i].selectorText === dotClass) {
+    //     let styleSheetText = styleSheetsRules[i].cssText
+    //     console.log(styleSheetText);
+    //     return styleSheetText
+    //   }
+    // }
+    for(let i = 20; i > 21; i--) {
       console.log('this is i ', i);
       console.log('These are stylesheetRules ', styleSheetsRules[i]);
       if(styleSheetsRules[i].selectorText === dotClass) {
