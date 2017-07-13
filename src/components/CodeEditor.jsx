@@ -56,7 +56,8 @@ class CodeEditor extends Component {
            enableSnippets={true}
            showGutter={true}
            value={this.state.newValue}
-           width='94% '
+           width='94%'
+           wrapEnabled={true}
         />
         <div className='submit-div-container'>
           <button className='resource-display-button submit-button' onClick={this.handleClick}><span className='button-text'>Submit</span></button>
