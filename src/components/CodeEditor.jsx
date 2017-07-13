@@ -33,14 +33,15 @@ class CodeEditor extends Component {
 
   updateStyleSheets (newValue, oldValue) {
     let styleSheets = document.styleSheets
-    console.log('updateStyleSheets function is hooked up');
-    console.log('this is newValue: ', this.state.newValue);
-    console.log('this is oldValue: ', this.state.oldValue);
+    console.log(styleSheets);
 
     for(let i = 0; i < styleSheets.length; i++) {
+      console.log('fisrt loop');
 	    if(styleSheets[i].cssRules) {
+        console.log('second loop');
         for (let j = 0; j < styleSheets[i].cssRules.length; j++ ) {
           if(styleSheets[i].cssRules[j].selectorText === this.state.oldValue) {
+            console.log('third loop');
             styleSheets[i].insertRule(this.state.newValue, 1)
             styleSheets[i].removeRule()
           }
