@@ -41,7 +41,7 @@ class CodeEditor extends Component {
         console.log('second loop', i);
         console.log('styleSheets[i].cssRules: ', styleSheets[i].cssRules);
         for (let j = 0; j < styleSheets[i].cssRules.length; j++ ) {
-          console.log('styleSheets[i].cssRules[j]', j);
+          console.log(styleSheets[i].cssRules[j], j);
           if(styleSheets[i].cssRules[j].selectorText === this.state.oldValue) {
             console.log('third loop');
             styleSheets[i].insertRule(this.state.newValue, 1)
