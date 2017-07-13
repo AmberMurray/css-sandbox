@@ -87,7 +87,7 @@ class Home extends Component {
     // }
     console.log('Welcome to getStyleSheets!');
     for(let i = styleSheetsRules.length -1; i > styleSheetsRules.length; i--) {
-      console.log('getStyleSheets first loop');
+      console.log('These are stylesheetRules ', styleSheetsRules[i]);
       if(styleSheetsRules.selectorText === dotClass) {
         let styleSheetText = styleSheetsRules.cssText
         console.log(styleSheetText);
