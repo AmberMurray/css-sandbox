@@ -35,6 +35,7 @@ class Home extends Component {
     if(value === 'bounce') {
       this.alterButtonState()
       this.alterFormState()
+      console.log(document.styleSheets[2].cssRules[18].cssText);
       animationComponent = <Text />
     } else {
       animationComponent = null
