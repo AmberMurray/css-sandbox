@@ -20,21 +20,22 @@ class CodeEditor extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('Next props', nextProps);
+    console.log('This is nextProps ', nextProps);
     this.setState({ newValue: nextProps.text })
   }
 
   onChange (newValue) {
+    console.log('This is new value: ', newValue);
     this.setState({ newValue })
   }
 
   handleClick(e) {
     try {
       console.log(document.styleSheets);
-      document.styleSheets[12].insertRule(this.state.newValue, 1)
-      document.styleSheets[12].removeRule()
+      document.styleSheets[2].insertRule(this.state.newValue, 1)
+      document.styleSheets[2].removeRule()
 
-      console.log(document.styleSheets[12].cssRules[0].cssText);
+      console.log(document.styleSheets[2].cssRules[0].cssText);
     }
     catch (error) {
       console.log('You suck because ' + error);
