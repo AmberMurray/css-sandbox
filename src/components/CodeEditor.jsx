@@ -22,7 +22,6 @@ class CodeEditor extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
     let oldClass
     if(nextProps.animationClass) {
       oldClass = nextProps.animationClass

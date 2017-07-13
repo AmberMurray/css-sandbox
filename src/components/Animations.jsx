@@ -26,6 +26,11 @@ class Animations extends Component {
               value="bounce"
               >Bounce
             </option>
+            <option
+              id='jump'
+              value="jump"
+              >Jump
+            </option>
           </select>
         </div>
       </div>
