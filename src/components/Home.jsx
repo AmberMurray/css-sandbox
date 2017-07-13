@@ -84,14 +84,13 @@ class Home extends Component {
     //   }
     // }
 
-    for(let i = styleSheetsRules.length -1; i > styleSheetsRules.length -3; i--) {
+    for(let i = styleSheetsRules.length -1; i > styleSheetsRules.length; i--) {
       if(styleSheetsRules.selectorText === dotClass) {
         let styleSheetText = styleSheetsRules.cssText
         console.log(styleSheetText);
         return styleSheetText
       }
     }
-
   }
 
   render() {
