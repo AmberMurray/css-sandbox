@@ -38,10 +38,10 @@ class CodeEditor extends Component {
     for(let i = 0; i < styleSheets.length; i++) {
       console.log('fisrt loop');
 	    if(styleSheets[i].cssRules) {
-        console.log('second loop');
+        console.log('second loop', i);
         console.log('styleSheets[i].cssRules: ', styleSheets[i].cssRules);
         for (let j = 0; j < styleSheets[i].cssRules.length; j++ ) {
-          console.log('styleSheets[i].cssRules[j]');
+          console.log('styleSheets[i].cssRules[j]', j);
           if(styleSheets[i].cssRules[j].selectorText === this.state.oldValue) {
             console.log('third loop');
             styleSheets[i].insertRule(this.state.newValue, 1)
