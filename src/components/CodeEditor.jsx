@@ -18,7 +18,7 @@ class CodeEditor extends Component {
 
     this.onChange = this.onChange.bind(this)
     this.handleClick = this.handleClick.bind(this)
-      this.updateStyleSheets = this.updateStyleSheets.bind(this)
+    this.updateStyleSheets = this.updateStyleSheets.bind(this)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -40,7 +40,9 @@ class CodeEditor extends Component {
 
   updateStyleSheets (newValue, oldValue) {
     let styleSheets = document.styleSheets
-    
+
+    console.log(newValue, oldValue);
+
     for(let i = 0; i < styleSheets.length; i++) {
 	    if(styleSheets[i].cssRules) {
         for (let j = 0; j < styleSheets[i].cssRules.length; j++ ) {

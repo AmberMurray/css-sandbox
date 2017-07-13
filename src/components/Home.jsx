@@ -75,6 +75,7 @@ class Home extends Component {
 	    if(styleSheets[i].cssRules) {
         for (let j = 0; j < styleSheets[i].cssRules.length; j++ ) {
           if(styleSheets[i].cssRules[j].selectorText === dotClass || styleSheets[i].cssRules[j].selectorText === hash) {
+            console.log(styleSheets[i].cssRules);
             let styleSheetText = styleSheets[i].cssRules[j].cssText
             return styleSheetText
           }
