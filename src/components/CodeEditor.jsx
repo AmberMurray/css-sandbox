@@ -12,16 +12,18 @@ class CodeEditor extends Component {
     super(props)
 
     this.state = {
-      newValue: ''
+      newValue: '',
+      oldValue: '',
     }
 
     this.onChange = this.onChange.bind(this)
     this.handleClick = this.handleClick.bind(this)
+      this.updateStyleSheets = this.updateStyleSheets.bind(this)
   }
 
   componentWillReceiveProps(nextProps) {
     console.log('This is nextProps ', nextProps);
-    this.setState({ newValue: nextProps.text })
+    this.setState({ newValue: nextProps.text, oldValue: '.' + nextProps.animationClass })
   }
 
   onChange (newValue) {
@@ -29,13 +31,33 @@ class CodeEditor extends Component {
     this.setState({ newValue })
   }
 
+  updateStyleSheets (newValue, oldValue) {
+    let styleSheets = document.styleSheets
+    console.log('updateStyleSheets function is hooked up');
+    console.log('this is newValue: ', this.state.newValue);
+    console.log('this is oldValue: ', this.state.oldValue);
+
+    for(let i = 0; i < styleSheets.length; i++) {
+	    if(styleSheets[i].cssRules) {
+        for (let j = 0; j < styleSheets[i].cssRules.length; j++ ) {
+          if(styleSheets[i].cssRules[j].selectorText === this.state.oldValue) {
+            styleSheets[i].insertRule(this.state.newValue, 1)
+            styleSheets[i].removeRule()
+          }
+        }
+      }
+    }
+  }
+
   handleClick(e) {
     try {
-      console.log(document.styleSheets);
-      document.styleSheets[2].insertRule(this.state.newValue, 1)
-      document.styleSheets[2].removeRule()
 
-      console.log(document.styleSheets[2].cssRules[0].cssText);
+      this.updateStyleSheets(this.state.newValue, this.state.oldValue)
+      // console.log(document.styleSheets);
+      // document.styleSheets[10].insertRule(this.state.newValue, 1)
+      // document.styleSheets[10].removeRule()
+      //
+      // console.log(document.styleSheets[10].cssRules[0].cssText);
     }
     catch (error) {
       console.log('You suck because ' + error);
