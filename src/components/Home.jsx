@@ -73,6 +73,8 @@ class Home extends Component {
     let dotClass = '.' + value
     let hash = '#' + value
 
+    console.log('This is styleSheetsRules ', styleSheetsRules);
+
     // for(let i = 0; i < styleSheets.length; i++) {
 	  //   if(styleSheets[i].cssRules) {
     //     if(styleSheets[i].cssRules[0].selectorText === dotClass || styleSheets[i].cssRules[0].selectorText === hash) {
@@ -83,8 +85,9 @@ class Home extends Component {
     //     }
     //   }
     // }
-
+    console.log('Welcome to getStyleSheets!');
     for(let i = styleSheetsRules.length -1; i > styleSheetsRules.length; i--) {
+      console.log('getStyleSheets first loop');
       if(styleSheetsRules.selectorText === dotClass) {
         let styleSheetText = styleSheetsRules.cssText
         console.log(styleSheetText);
