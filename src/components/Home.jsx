@@ -69,37 +69,40 @@ class Home extends Component {
 
   getStyleSheets (value) {
     let styleSheets = document.styleSheets
-    let styleSheetsRules = document.styleSheets[2].cssRules
+    // let styleSheetsRules = document.styleSheets[2].cssRules
     let dotClass = '.' + value
     let hash = '#' + value
 
-    console.log('This is styleSheetsRules ', styleSheetsRules);
+    for(let i = 0; i < styleSheets.length; i++) {
+      console.log('first level of loop');
+	    if(styleSheets[i].cssRules) {
+        console.log('second level of loop');
+        for (let j = 0; j < styleSheets[i].cssRules.length; j++ ) {
 
-    // for(let i = 0; i < styleSheets.length; i++) {
-	  //   if(styleSheets[i].cssRules) {
-    //     if(styleSheets[i].cssRules[0].selectorText === dotClass || styleSheets[i].cssRules[0].selectorText === hash) {
-    //       let styleSheetText = styleSheets[i].cssRules[0].cssText
-    //       console.log(styleSheets[i].cssRules);
-    //       console.log(styleSheetText);
-    //       return styleSheetText
-    //     }
-    //   }
-    // }
-    console.log('Welcome to getStyleSheets!');
-    console.log('Length of styleSheetsRules: ', styleSheetsRules.length);
-    console.log('styleSheetsRules[18]: ', styleSheetsRules[18]);
-    console.log('styleSheetsRules[18].cssText: ', styleSheetsRules[18].cssText);
-    console.log('styleSheetsRules[18].selectorText: ' + styleSheetsRules[18].selectorText);
-    for(let i = styleSheetsRules.length -1; i > -1; i--) {
-      console.log('this is i ', i);
-      console.log('These are stylesheetRules ', styleSheetsRules[i]);
-      if(styleSheetsRules[i].selectorText === dotClass) {
-        let styleSheetText = styleSheetsRules[i].cssText
-        console.log(styleSheetText);
-        return styleSheetText
+          if(styleSheets[i].cssRules[j].selectorText === dotClass || styleSheets[i].cssRules[j].selectorText === hash) {
+
+            let styleSheetText = styleSheets[i].cssRules[j].cssText
+            console.log(styleSheetText);
+            return styleSheetText
+          }
+        }
       }
     }
-  }
+  }    // console.log('Welcome to getStyleSheets!');
+    // console.log('Length of styleSheetsRules: ', styleSheetsRules.length);
+    // console.log('styleSheetsRules[18]: ', styleSheetsRules[18]);
+    // console.log('styleSheetsRules[18].cssText: ', styleSheetsRules[18].cssText);
+    // console.log('styleSheetsRules[18].selectorText: ' + styleSheetsRules[18].selectorText);
+    //
+    // for(let i = styleSheetsRules.length -1; i > -1; i--) {
+    //   console.log('this is i ', i);
+    //   console.log('These are stylesheetRules ', styleSheetsRules[i]);
+    //   if(styleSheetsRules[i].selectorText === dotClass) {
+    //     let styleSheetText = styleSheetsRules[i].cssText
+    //     console.log(styleSheetText);
+    //     return styleSheetText
+    //   }
+    // }
 
   render() {
 
