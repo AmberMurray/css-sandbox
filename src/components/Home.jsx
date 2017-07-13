@@ -89,7 +89,7 @@ class Home extends Component {
     console.log('Length of styleSheetsRules: ', styleSheetsRules.length);
     console.log('styleSheetsRules[18]: ', styleSheetsRules[18]);
     console.log('styleSheetsRules[18].cssText: ', styleSheetsRules[18].cssText);
-    console.log('styleSheetsRules[18].selectorText: ' + styleSheetText[18].selectorText);
+    console.log('styleSheetsRules[18].selectorText: ' + styleSheetRules[18].selectorText);
     for(let i = styleSheetsRules.length -1; i > styleSheetsRules.length; i--) {
       console.log('this is i ', i);
       console.log('These are stylesheetRules ', styleSheetsRules[i]);
