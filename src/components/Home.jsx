@@ -35,7 +35,6 @@ class Home extends Component {
     if(value === 'bounce') {
       this.alterButtonState()
       this.alterFormState()
-      console.log(document.styleSheets[2].cssRules[18].cssText);
       animationComponent = <Text />
     } else {
       animationComponent = null
@@ -68,30 +67,31 @@ class Home extends Component {
   }
 
   getStyleSheets (value) {
-    let styleSheets = document.styleSheets
+    // let styleSheets = document.styleSheets
+    let styleSheetsRules = document.styleSheets[2].cssRules
     let dotClass = '.' + value
     let hash = '#' + value
 
-    for(let i = 0; i < styleSheets.length; i++) {
-      // console.log(styleSheets[i].title);
-	    if(styleSheets[i].cssRules) {
-        if(styleSheets[i].cssRules[0].selectorText === dotClass || styleSheets[i].cssRules[0].selectorText === hash) {
-          let styleSheetText = styleSheets[i].cssRules[0].cssText
-          console.log(styleSheets[i].cssRules);
-          console.log(styleSheetText);
-          return styleSheetText
-        }
+    // for(let i = 0; i < styleSheets.length; i++) {
+	  //   if(styleSheets[i].cssRules) {
+    //     if(styleSheets[i].cssRules[0].selectorText === dotClass || styleSheets[i].cssRules[0].selectorText === hash) {
+    //       let styleSheetText = styleSheets[i].cssRules[0].cssText
+    //       console.log(styleSheets[i].cssRules);
+    //       console.log(styleSheetText);
+    //       return styleSheetText
+    //     }
+    //   }
+    // }
+
+    for(let i = styleSheetsRules.length -1; i > 17; i--) {
+      if(styleSheetsRules.selectorText === dotClass) {
+        let styleSheetText = styleSheetsRules.cssText
+        console.log(styleSheetText);
+        return styleSheetText
       }
     }
-  }
 
-  // getStyleSheets (value) {
-  //   let newStyleSheet = new CSSStyleSheet()
-  //   console.log(newStyleSheet);
-  //   newStyleSheet.insert('.bounce { color: yellow }')
-  //   return newStyleSheet
-  //
-  // }
+  }
 
   render() {
 
