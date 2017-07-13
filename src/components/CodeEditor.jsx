@@ -22,7 +22,16 @@ class CodeEditor extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ newValue: nextProps.text, oldValue: '.' + nextProps.animationClass })
+    console.log(nextProps);
+    let oldClass
+    if(nextProps.animationClass) {
+      oldClass = nextProps.animationClass
+    } else if (nextProps.buttonClass) {
+      oldClass = nextProps.buttonClass
+    } else {
+      oldClass = nextProps.formClass
+    }
+    this.setState({ newValue: nextProps.text, oldValue: '.' + oldClass })
   }
 
   onChange (newValue) {
@@ -31,7 +40,7 @@ class CodeEditor extends Component {
 
   updateStyleSheets (newValue, oldValue) {
     let styleSheets = document.styleSheets
-
+    
     for(let i = 0; i < styleSheets.length; i++) {
 	    if(styleSheets[i].cssRules) {
         for (let j = 0; j < styleSheets[i].cssRules.length; j++ ) {
