@@ -66,7 +66,6 @@ class Home extends Component {
     this.setState({ forms: value, formComponent, currentClass: value, text: cssText })
   }
 
-
   getStyleSheets (value, ruleType) {
     let styleSheets = document.styleSheets
     let searchProp = ruleType === 'keyframe' ? 'name' : 'selectorText'

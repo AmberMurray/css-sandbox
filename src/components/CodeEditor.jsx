@@ -14,6 +14,7 @@ class CodeEditor extends Component {
     this.state = {
       newValue: '',
       oldValue: '',
+      ruleType: '',
     }
 
     this.onChange = this.onChange.bind(this)
@@ -37,15 +38,17 @@ class CodeEditor extends Component {
     this.setState({ newValue })
   }
 
-  updateStyleSheets (newValue, oldValue) {
+  updateStyleSheets (newValue, oldValue, ruleType) {
     let styleSheets = document.styleSheets
+    let searchProp = ruleType === 'keyframe' ? 'name' : 'selectorText'
 
-    console.log(newValue, oldValue);
+    console.log('this is newValue:',newValue)
+    console.log('this is oldValue:', oldValue)
 
     for(let i = 0; i < styleSheets.length; i++) {
 	    if(styleSheets[i].cssRules) {
         for (let j = 0; j < styleSheets[i].cssRules.length; j++ ) {
-          if(styleSheets[i].cssRules[j].selectorText === this.state.oldValue) {
+          if(styleSheets[i].cssRules[j][searchProp] === this.state.oldValue) {
             styleSheets[i].deleteRule(j)
             styleSheets[i].insertRule(this.state.newValue, 0)
           }
