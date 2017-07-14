@@ -89,7 +89,7 @@ class CodeEditor extends Component {
            enableLiveAutocompletion={true}
            enableSnippets={true}
            showGutter={true}
-           value={this.state.cssRule}
+           value={this.state.cssRule + this.state.keyframeRule}
            width='94%'
            wrapEnabled={true}
         />
