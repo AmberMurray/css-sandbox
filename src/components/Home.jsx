@@ -32,7 +32,7 @@ class Home extends Component {
 
   alterAnimationState (value, cssText) {
     let animationComponent
-    if(value === 'bounce') {
+    if(value === 'bounce' || value === 'jump') {
       this.alterButtonState()
       this.alterFormState()
       animationComponent = <Text />
@@ -44,7 +44,7 @@ class Home extends Component {
 
   alterButtonState (value, cssText) {
     let buttonComponent
-    if(value === 'press') {
+    if(value === 'press' || value === 'basic') {
       this.alterAnimationState()
       this.alterFormState()
       buttonComponent = <Button />
