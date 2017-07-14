@@ -33,7 +33,7 @@ class CodeEditor extends Component {
     } else {
       className = nextProps.formClass
     }
-    this.setState({ cssRule: nextProps.text, className: '.' + className, keyframeName: nextProps.animaitonName })
+    this.setState({ cssRule: nextProps.text, className: '.' + className, keyframeName: nextProps.animationName })
   }
 
   onChange (newValue) {
@@ -89,7 +89,7 @@ class CodeEditor extends Component {
            enableLiveAutocompletion={true}
            enableSnippets={true}
            showGutter={true}
-           value={this.state.newValue}
+           value={this.state.cssRule}
            width='94%'
            wrapEnabled={true}
         />
