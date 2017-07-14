@@ -1,3 +1,7 @@
+button, input, {
+  -webkit-appearance: none;
+}
+
 .fun {
-  background-color: red;
+  background-color: pink;
 }

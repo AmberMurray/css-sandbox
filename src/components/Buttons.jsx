@@ -17,6 +17,7 @@ class Buttons extends Component {
             let cssText = this.props.getStyleSheets(e.target.value)
             this.props.alterButtonState(e.target.value, cssText )}}>
             <option id="button-choice" value="try it out">Try It Out!</option>
+            <option id='basic' value="basic">Basic</option>
             <option id='press' value="press">Press</option>
           </select>
         </div>

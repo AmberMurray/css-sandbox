@@ -3,6 +3,14 @@ import '../styles/resources.css'
 
 class Animations extends Component {
 
+
+  handleChange (e) {
+    let searchTerm = '.' + e.target.value
+    let cssText = this.props.getStyleSheets(searchTerm, 'dotClass')
+    let keyframeText = this.props.getStyleSheets('bounceIn', 'keyframe')
+    this.props.alterAnimationState(e.target.value, cssText + keyframeText)
+  }
+
   render() {
 
     return (
@@ -13,9 +21,7 @@ class Animations extends Component {
           </label>
         </div>
         <div>
-          <select id="animation" onChange={e => {
-            let cssText = this.props.getStyleSheets(e.target.value)
-            this.props.alterAnimationState(e.target.value, cssText)}}>
+          <select id="animation" onChange={this.handleChange.bind(this)}>
             <option id="animation-choice" value="play">Play!</option>
             <option id='bounce' value="bounce">Bounce</option>
             <option id='jump' value="jump">Jump</option>

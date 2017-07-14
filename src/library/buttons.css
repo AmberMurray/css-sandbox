@@ -1,4 +1,12 @@
-#press {
+button, input, {
+  -webkit-appearance: none;
+}
+
+.basic {
+  background-color: #fff;
+}
+
+.press {
   background-color: blue;
   color: #fff;
 }
