@@ -44,7 +44,7 @@ class Home extends Component {
 
   alterButtonState (value, cssText) {
     let buttonComponent
-    if(value === 'press' || value === 'basic') {
+    if(value === 'press' || value ===   'basic') {
       this.alterAnimationState()
       this.alterFormState()
       buttonComponent = <Button />

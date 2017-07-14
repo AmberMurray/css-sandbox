@@ -7,7 +7,12 @@ class Animations extends Component {
   handleChange (e) {
     let searchTerm = '.' + e.target.value
     let cssText = this.props.getStyleSheets(searchTerm, 'dotClass')
-    let keyframeText = this.props.getStyleSheets('bounceIn', 'keyframe')
+
+    let newArray = cssText.split(' ')
+    let animationIndex = newArray.indexOf('animation:')
+    let animationName = newArray[animationIndex+1]
+
+    let keyframeText = this.props.getStyleSheets(animationName, 'keyframe')
     this.props.alterAnimationState(e.target.value, cssText + keyframeText)
   }
 
