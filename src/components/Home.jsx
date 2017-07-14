@@ -22,12 +22,14 @@ class Home extends Component {
       forms: 'Choose One!',
       formComponent: null,
       currentClass: this.props.animationClass || this.props.buttonClass || this.props.formClass,
+      animationName: ''
       }
 
     this.alterAnimationState = this.alterAnimationState.bind(this)
     this.alterButtonState = this.alterButtonState.bind(this)
     this.alterFormState = this.alterFormState.bind(this)
     this.getStyleSheets = this.getStyleSheets.bind(this)
+    this.setAnimationName = this.setAnimationName.bind(this)
   }
 
   alterAnimationState (value, cssText) {
@@ -66,9 +68,15 @@ class Home extends Component {
     this.setState({ forms: value, formComponent, currentClass: value, text: cssText })
   }
 
+  setAnimationName (value) {
+    this.setState({ animationName: value })
+  }
+
   getStyleSheets (value, ruleType) {
     let styleSheets = document.styleSheets
     let searchProp = ruleType === 'keyframe' ? 'name' : 'selectorText'
+
+    this.setAnimationName(value)
 
     for(let i = 0; i < styleSheets.length; i++) {
 	    if(styleSheets[i].cssRules) {
@@ -83,7 +91,7 @@ class Home extends Component {
   }
 
   render() {
-
+    console.log(this.state.animationName);
     return (
       <div>
         <h2 className='home-title'>CSS Sandbox</h2>
@@ -129,6 +137,7 @@ class Home extends Component {
               formClass={this.state.forms}
               currentClass={this.state.currentClass}
               getStyleSheets={this.getStyleSheets}
+              animationName={this.state.animationName}
             />
           </div>
         </div>

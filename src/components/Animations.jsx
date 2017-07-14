@@ -17,7 +17,7 @@ class Animations extends Component {
     if(!keyframeText) {
       this.props.alterAnimationState(e.target.value, cssText)
     } else {
-      this.props.alterAnimationState(e.target.value, cssText + keyframeText)
+      this.props.alterAnimationState(e.target.value, cssText + '\n \n' + keyframeText)
     }
   }
 

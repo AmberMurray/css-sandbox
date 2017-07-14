@@ -12,9 +12,10 @@ class CodeEditor extends Component {
     super(props)
 
     this.state = {
-      newValue: '',
-      oldValue: '',
-      ruleType: '',
+      cssRule: '',
+      className: '',
+      keyframeRule: '',
+      keyframeName: '',
     }
 
     this.onChange = this.onChange.bind(this)
@@ -23,34 +24,38 @@ class CodeEditor extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    let oldClass
+    console.log(nextProps.text);
+    let className
     if(nextProps.animationClass) {
-      oldClass = nextProps.animationClass
+      className = nextProps.animationClass
     } else if (nextProps.buttonClass) {
-      oldClass = nextProps.buttonClass
+      className = nextProps.buttonClass
     } else {
-      oldClass = nextProps.formClass
+      className = nextProps.formClass
     }
-    this.setState({ newValue: nextProps.text, oldValue: '.' + oldClass })
+    this.setState({ cssRule: nextProps.text, className: '.' + className, keyframeName: nextProps.animaitonName })
   }
 
   onChange (newValue) {
-    this.setState({ newValue })
+    let ruleSplit = newValue.split('@')
+
+    this.setState({ cssRule: ruleSplit[0], keyframeRule: '@' + ruleSplit[1] })
   }
 
-  updateStyleSheets (newValue, oldValue, ruleType) {
+  updateStyleSheets (newValue, searchParam) {
     let styleSheets = document.styleSheets
-    let searchProp = ruleType === 'keyframe' ? 'name' : 'selectorText'
+    let searchProp = this.props.animationName ? 'name' : 'selectorText'
 
     console.log('this is newValue:',newValue)
-    console.log('this is oldValue:', oldValue)
+    console.log('this is oldValue:', searchParam)
+    console.log('this is animaitonName:', this.props.animationName);
 
     for(let i = 0; i < styleSheets.length; i++) {
 	    if(styleSheets[i].cssRules) {
         for (let j = 0; j < styleSheets[i].cssRules.length; j++ ) {
-          if(styleSheets[i].cssRules[j][searchProp] === this.state.oldValue) {
+          if(styleSheets[i].cssRules[j][searchProp] === searchParam) {
             styleSheets[i].deleteRule(j)
-            styleSheets[i].insertRule(this.state.newValue, 0)
+            styleSheets[i].insertRule(newValue, 0)
           }
         }
       }
@@ -59,7 +64,10 @@ class CodeEditor extends Component {
 
   handleClick(e) {
     try {
-      this.updateStyleSheets(this.state.newValue, this.state.oldValue)
+
+      this.updateStyleSheets(this.state.cssRule, this.state.className)
+      this.updateStyleSheets(this.state.keyframeRule, this.state.keyframeName)
+
     }
     catch (error) {
       console.log('You suck because ' + error);
@@ -67,6 +75,7 @@ class CodeEditor extends Component {
   }
 
   render() {
+    console.log(this.state.cssRule);
 
     return (
       <div>
