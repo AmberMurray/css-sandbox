@@ -66,19 +66,14 @@ class Home extends Component {
     this.setState({ forms: value, formComponent, currentClass: value, text: cssText })
   }
 
+
   getStyleSheets (value, ruleType) {
     let styleSheets = document.styleSheets
-    // let searchTerm = value === 'keyframe' ? '.' + value
     let searchProp = ruleType === 'keyframe' ? 'name' : 'selectorText'
-
-
-
 
     for(let i = 0; i < styleSheets.length; i++) {
 	    if(styleSheets[i].cssRules) {
         for (let j = 0; j < styleSheets[i].cssRules.length; j++ ) {
-          console.log('here we are', searchProp);
-          console.log(styleSheets[i].cssRules[j], styleSheets[i].cssRules[j][searchProp]);
           if(styleSheets[i].cssRules[j][searchProp] === value) {
             let styleSheetText = styleSheets[i].cssRules[j].cssText
             return styleSheetText
