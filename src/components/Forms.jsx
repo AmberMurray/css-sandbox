@@ -5,7 +5,7 @@ import '../styles/resources.css'
 class Forms extends Component {
 
   render() {
-    
+
     return (
       <div>
         <div className='forms-div'>
@@ -17,16 +17,8 @@ class Forms extends Component {
           <select id="form" onChange={e => {
             let cssText = this.props.getStyleSheets(e.target.value)
             this.props.alterFormState(e.target.value, cssText)}}>
-            <option
-              id="form-choice"
-              value="choose one"
-              >Choose One!
-            </option>
-            <option
-              id='fun'
-              value="fun"
-              >Fun
-            </option>
+            <option id="form-choice" value="choose one">Choose One!</option>
+            <option id='fun' value="fun">Fun</option>
           </select>
         </div>
       </div>

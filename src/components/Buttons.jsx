@@ -4,7 +4,7 @@ import '../styles/resources.css'
 class Buttons extends Component {
 
   render() {
-    
+
     return (
       <div>
         <div className='buttons-div'>
@@ -16,16 +16,8 @@ class Buttons extends Component {
           <select id="button" onChange={e => {
             let cssText = this.props.getStyleSheets(e.target.value)
             this.props.alterButtonState(e.target.value, cssText )}}>
-            <option
-              id="button-choice"
-              value="try it out"
-              >Try It Out!
-            </option>
-            <option
-              id='press'
-              value="press"
-              >Press
-            </option>
+            <option id="button-choice" value="try it out">Try It Out!</option>
+            <option id='press' value="press">Press</option>
           </select>
         </div>
       </div>
