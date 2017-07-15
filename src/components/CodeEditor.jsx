@@ -36,8 +36,7 @@ class CodeEditor extends Component {
   }
 
   onChange (newValue) {
-
-    if(this.state.keyframeRule){
+    if(this.state.keyframeName){
       let ruleSplit = newValue.split('@')
       this.setState({ cssRule: ruleSplit[0], keyframeRule: '@' + ruleSplit[1] })
     } else {
@@ -50,16 +49,17 @@ class CodeEditor extends Component {
     let searchProp = this.props.animationName ? 'name' : 'selectorText'
 
     console.log('this is newValue:',newValue)
-    console.log('this is oldValue:', searchParam)
-    console.log('this is animaitonName:', this.props.animationName)
+    console.log('this is searchParam:', searchParam)
+    console.log('this is keyframerule:', this.state.keyframeRule);
+    console.log('this is animaitonName:', this.state.keyframeName)
     console.log('this is searchProp:', searchProp);
 
     for(let i = 0; i < styleSheets.length; i++) {
 	    if(styleSheets[i].cssRules) {
         console.log('first part of the loop');
         for (let j = 0; j < styleSheets[i].cssRules.length; j++ ) {
-          // console.log('These are styleSheets rules:', styleSheets[i].cssRules[j]);
           if(styleSheets[i].cssRules[j][searchProp] === searchParam) {
+            console.log('rule to be deleted:', styleSheets[i].cssRules[j])
             styleSheets[i].deleteRule(j)
             styleSheets[i].insertRule(newValue, 0)
           }
@@ -70,8 +70,9 @@ class CodeEditor extends Component {
 
   handleClick(e) {
     try {
+      console.log(this.state.keyframeRule);
       if(this.state.keyframeRule) {
-        this.updateStyleSheets(this.state.cssRule, this.state.className)
+        // this.updateStyleSheets(this.state.cssRule, this.state.className)
         this.updateStyleSheets(this.state.cssRule + '\n \n' + this.state.keyframeRule, this.state.keyframeName)
       } else {
         this.updateStyleSheets(this.state.cssRule, this.state.className)

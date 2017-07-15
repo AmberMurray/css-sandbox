@@ -8,9 +8,10 @@ class Buttons extends Component {
     let cssText = this.props.getStyleSheets(searchTerm, 'dotClass')
     let styleSheets = document.styleSheets
 
-    if(this.props.animationName) {
-      let newArray = cssText.split(' ')
-      let animationIndex = newArray.indexOf('animation:')
+    let newArray = cssText.split(' ')
+    let animationIndex = newArray.indexOf('animation:')
+
+    if(animationIndex !== -1) {
       let animationName = newArray[animationIndex+1]
       let keyframeText = this.props.getStyleSheets(animationName, 'keyframe')
 

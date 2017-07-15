@@ -10,14 +10,14 @@ class Animations extends Component {
 
     let newArray = cssText.split(' ')
     let animationIndex = newArray.indexOf('animation:')
-    let animationName = newArray[animationIndex+1]
 
-    let keyframeText = this.props.getStyleSheets(animationName, 'keyframe')
+    if(animationIndex !== -1) {
+      let animationName = newArray[animationIndex+1]
+      let keyframeText = this.props.getStyleSheets(animationName, 'keyframe')
 
-    if(!keyframeText) {
-      this.props.alterAnimationState(e.target.value, cssText)
-    } else {
       this.props.alterAnimationState(e.target.value, cssText + '\n \n' + keyframeText)
+    } else {
+      this.props.alterAnimationState(e.target.value, cssText)
     }
   }
 

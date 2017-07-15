@@ -4,6 +4,24 @@ import '../styles/resources.css'
 
 class Forms extends Component {
 
+  handleChange (e) {
+    let searchTerm = '.' + e.target.value
+    let cssText = this.props.getStyleSheets(searchTerm, 'dotClass')
+    let styleSheets = document.styleSheets
+
+    let newArray = cssText.split(' ')
+    let animationIndex = newArray.indexOf('animation:')
+
+    if(animationIndex !== -1) {
+      let animationName = newArray[animationIndex+1]
+      let keyframeText = this.props.getStyleSheets(animationName, 'keyframe')
+
+      this.props.alterFormState(e.target.value, cssText + '\n \n' + keyframeText)
+    } else {
+      this.props.alterFormState(e.target.value, cssText)
+    }
+  }
+
   render() {
 
     return (
@@ -14,9 +32,7 @@ class Forms extends Component {
           </label>
         </div>
         <div>
-          <select id="form" onChange={e => {
-            let cssText = this.props.getStyleSheets(e.target.value)
-            this.props.alterFormState(e.target.value, cssText)}}>
+          <select id="form" onChange={this.handleChange.bind(this)}>
             <option id="form-choice" value="choose one">Choose One!</option>
             <option id='fun' value="fun">Fun</option>
           </select>
