@@ -3,6 +3,23 @@ import '../styles/resources.css'
 
 class Buttons extends Component {
 
+  handleChange (e) {
+    let searchTerm = '.' + e.target.value
+    let cssText = this.props.getStyleSheets(searchTerm, 'dotClass')
+    let styleSheets = document.styleSheets
+
+    if(this.props.animationName) {
+      let newArray = cssText.split(' ')
+      let animationIndex = newArray.indexOf('animation:')
+      let animationName = newArray[animationIndex+1]
+      let keyframeText = this.props.getStyleSheets(animationName, 'keyframe')
+
+      this.props.alterButtonState(e.target.value, cssText + '\n \n' + keyframeText)
+    } else {
+      this.props.alterButtonState(e.target.value, cssText)
+    }
+  }
+
   render() {
 
     return (
@@ -13,9 +30,7 @@ class Buttons extends Component {
           </label>
         </div>
         <div>
-          <select id="button" onChange={e => {
-            let cssText = this.props.getStyleSheets(e.target.value)
-            this.props.alterButtonState(e.target.value, cssText )}}>
+          <select id="button" onChange={this.handleChange.bind(this)}>
             <option id="button-choice" value="try it out">Try It Out!</option>
             <option id='basic' value="basic">Basic</option>
             <option id='press' value="press">Press</option>

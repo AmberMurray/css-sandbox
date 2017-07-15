@@ -24,7 +24,6 @@ class CodeEditor extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps.text);
     let className
     if(nextProps.animationClass) {
       className = nextProps.animationClass
@@ -37,9 +36,13 @@ class CodeEditor extends Component {
   }
 
   onChange (newValue) {
-    let ruleSplit = newValue.split('@')
 
-    this.setState({ cssRule: ruleSplit[0], keyframeRule: '@' + ruleSplit[1] })
+    if(this.state.keyframeRule){
+      let ruleSplit = newValue.split('@')
+      this.setState({ cssRule: ruleSplit[0], keyframeRule: '@' + ruleSplit[1] })
+    } else {
+      this.setState({ cssRule: newValue})
+    }
   }
 
   updateStyleSheets (newValue, searchParam) {
@@ -48,11 +51,14 @@ class CodeEditor extends Component {
 
     console.log('this is newValue:',newValue)
     console.log('this is oldValue:', searchParam)
-    console.log('this is animaitonName:', this.props.animationName);
+    console.log('this is animaitonName:', this.props.animationName)
+    console.log('this is searchProp:', searchProp);
 
     for(let i = 0; i < styleSheets.length; i++) {
 	    if(styleSheets[i].cssRules) {
+        console.log('first part of the loop');
         for (let j = 0; j < styleSheets[i].cssRules.length; j++ ) {
+          // console.log('These are styleSheets rules:', styleSheets[i].cssRules[j]);
           if(styleSheets[i].cssRules[j][searchProp] === searchParam) {
             styleSheets[i].deleteRule(j)
             styleSheets[i].insertRule(newValue, 0)
@@ -64,10 +70,12 @@ class CodeEditor extends Component {
 
   handleClick(e) {
     try {
-
-      this.updateStyleSheets(this.state.cssRule, this.state.className)
-      this.updateStyleSheets(this.state.keyframeRule, this.state.keyframeName)
-
+      if(this.state.keyframeRule) {
+        this.updateStyleSheets(this.state.cssRule, this.state.className)
+        this.updateStyleSheets(this.state.cssRule + '\n \n' + this.state.keyframeRule, this.state.keyframeName)
+      } else {
+        this.updateStyleSheets(this.state.cssRule, this.state.className)
+      }
     }
     catch (error) {
       console.log('You suck because ' + error);

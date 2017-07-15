@@ -73,10 +73,19 @@ class Home extends Component {
   }
 
   getStyleSheets (value, ruleType) {
+    console.log(ruleType);
     let styleSheets = document.styleSheets
     let searchProp = ruleType === 'keyframe' ? 'name' : 'selectorText'
 
-    this.setAnimationName(value)
+    console.log(searchProp);
+
+    if(searchProp === 'name') {
+      this.setAnimationName(value)
+    } else {
+      this.setAnimationName(null)
+    }
+
+    console.log(this.state.animationName);
 
     for(let i = 0; i < styleSheets.length; i++) {
 	    if(styleSheets[i].cssRules) {
