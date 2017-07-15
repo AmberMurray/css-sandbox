@@ -73,19 +73,14 @@ class Home extends Component {
   }
 
   getStyleSheets (value, ruleType) {
-    console.log(ruleType);
     let styleSheets = document.styleSheets
     let searchProp = ruleType === 'keyframe' ? 'name' : 'selectorText'
-
-    console.log(searchProp);
 
     if(searchProp === 'name') {
       this.setAnimationName(value)
     } else {
       this.setAnimationName(null)
     }
-
-    console.log(this.state.animationName);
 
     for(let i = 0; i < styleSheets.length; i++) {
 	    if(styleSheets[i].cssRules) {
@@ -100,7 +95,7 @@ class Home extends Component {
   }
 
   render() {
-    console.log(this.state.animationName);
+    
     return (
       <div>
         <h2 className='home-title'>CSS Sandbox</h2>

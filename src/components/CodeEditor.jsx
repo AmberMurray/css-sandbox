@@ -84,8 +84,7 @@ class CodeEditor extends Component {
   }
 
   render() {
-    console.log(this.state.cssRule);
-
+  
     return (
       <div>
         <AceEditor

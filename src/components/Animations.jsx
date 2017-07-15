@@ -6,7 +6,6 @@ class Animations extends Component {
   handleChange (e) {
     let searchTerm = '.' + e.target.value
     let cssText = this.props.getStyleSheets(searchTerm, 'dotClass')
-    let styleSheets = document.styleSheets
 
     let newArray = cssText.split(' ')
     let animationIndex = newArray.indexOf('animation:')

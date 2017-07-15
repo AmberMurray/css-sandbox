@@ -3,9 +3,6 @@ import '../styles/resources.css'
 import '../library/animations.css'
 
 class Text extends Component {
-  constructor (props) {
-    super(props)
-  }
 
   render() {
 

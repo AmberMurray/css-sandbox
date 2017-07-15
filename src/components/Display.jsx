@@ -2,10 +2,6 @@ import React, { Component } from 'react'
 import '../styles/resources.css'
 
 class Display extends Component {
-  constructor (props) {
-    super(props)
-
-  }
 
   render() {
 
