@@ -76,6 +76,7 @@ class Home extends Component {
     let styleSheets = document.styleSheets
     let searchProp = ruleType === 'keyframe' ? 'name' : 'selectorText'
 
+
     if(searchProp === 'name') {
       this.setAnimationName(value)
     } else {
@@ -95,7 +96,7 @@ class Home extends Component {
   }
 
   render() {
-    
+
     return (
       <div>
         <h2 className='home-title'>CSS Sandbox</h2>
