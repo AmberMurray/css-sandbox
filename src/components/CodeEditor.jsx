@@ -52,11 +52,11 @@ class CodeEditor extends Component {
     console.log('this is searchParam:', searchParam)
     console.log('this is keyframerule:', this.state.keyframeRule);
     console.log('this is animaitonName:', this.state.keyframeName)
-    console.log('this is searchProp:', searchProp);
+    console.log('this is searchProp:', searchProp); 
 
     for(let i = 0; i < styleSheets.length; i++) {
+      console.log('first part of the loop', i);
 	    if(styleSheets[i].cssRules) {
-        console.log('first part of the loop');
         for (let j = 0; j < styleSheets[i].cssRules.length; j++ ) {
           if(styleSheets[i].cssRules[j][searchProp] === searchParam) {
             console.log('rule to be deleted:', styleSheets[i].cssRules[j])
@@ -84,21 +84,22 @@ class CodeEditor extends Component {
   }
 
   render() {
-  
+
     return (
       <div>
         <AceEditor
-           mode="css"
-           theme="chrome"
-           name="ace_content"
+           mode={"css"}
+           theme={"chrome"}
+           name={"ace_content"}
            onChange={this.onChange}
            editorProps={{$blockScrolling: Infinity}}
            enableBasicAutocompletion={true}
            enableLiveAutocompletion={true}
            enableSnippets={true}
            showGutter={true}
+           tabSize={2}
            value={this.state.cssRule + this.state.keyframeRule}
-           width='94%'
+           width={'95%'}
            wrapEnabled={true}
         />
         <div className='submit-div-container'>
