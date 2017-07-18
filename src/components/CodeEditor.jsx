@@ -37,7 +37,8 @@ class CodeEditor extends Component {
 
   onChange (newValue) {
     if(this.state.keyframeName){
-      let ruleSplit = newValue.split('@')
+      let trimRule = newValue.replace(/\n|\r/g, "")
+      let ruleSplit = trimRule.split('@')
       this.setState({ cssRule: ruleSplit[0], keyframeRule: '@' + ruleSplit[1] })
     } else {
       this.setState({ cssRule: newValue})
@@ -48,21 +49,21 @@ class CodeEditor extends Component {
     let styleSheets = document.styleSheets
     let searchProp = this.props.animationName ? 'name' : 'selectorText'
 
-    console.log('this is newValue:',newValue)
+    console.log('this is cssRule:',this.state.cssRule)
     console.log('this is searchParam:', searchParam)
     console.log('this is keyframerule:', this.state.keyframeRule);
-    console.log('this is animaitonName:', this.state.keyframeName)
+    console.log('this is animationName:', this.state.keyframeName)
     console.log('this is searchProp:', searchProp);
 
     for(let i = 0; i < styleSheets.length; i++) {
 	    if(styleSheets[i].cssRules) {
         for (let j = 0; j < styleSheets[i].cssRules.length; j++ ) {
-          if(styleSheets[i].cssRules[j][searchProp] === searchParam) {
-            if(searchProp === 'keyframe') {
+          if(styleSheets[i].cssRules[j][searchProp] === searchParam && searchProp === 'name' ) {
+              console.log('trying to insert/delete keyframe');
                 styleSheets[i].deleteRule(j)
                 styleSheets[i].insertRule(this.state.cssRule, 0)
-                styleSheets[i].insertRule(this.state.keyframeRule, 0)
-            } else {
+                styleSheets[i].insertRule(this.state.keyframeRule, 1)
+            }  else if(styleSheets[i].cssRules[j][searchProp] === searchParam) {
               styleSheets[i].deleteRule(j)
               styleSheets[i].insertRule(newValue, 0)
             }
@@ -70,7 +71,6 @@ class CodeEditor extends Component {
         }
       }
     }
-  }
 
   handleClick(e) {
     try {
@@ -86,7 +86,6 @@ class CodeEditor extends Component {
   }
 
   render() {
-    console.log(this.props);
 
     return (
       <div>
