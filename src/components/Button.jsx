@@ -8,7 +8,7 @@ class Button extends Component {
   render() {
     return (
       <div>
-        <button className={'resource-display-button ' + this.props.className}>Button</button>
+        <button className={'resource-display-button ' + this.props.className} >Button</button>
       </div>
     )
   }

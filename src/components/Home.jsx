@@ -30,11 +30,21 @@ class Home extends Component {
     this.alterFormState = this.alterFormState.bind(this)
     this.getStyleSheets = this.getStyleSheets.bind(this)
     this.setAnimationName = this.setAnimationName.bind(this)
+    this.getSelectOptionsValues = this.getSelectOptionsValues.bind(this)
+  }
+
+  getSelectOptionsValues () {
+  // let select = document.getElementById('animations')
+  // let txt = ''
+  //
+  //   for (i = 0; i < x.length; i++) {
+  //       txt = txt + x.options[i].text + "<br>";
+  //   }
   }
 
   alterAnimationState (value, cssText) {
     let animationComponent
-    if(value === 'bounce' || value === 'jump') {
+    if(value === 'fadeIn' || value === 'fadeOut') {
       this.alterButtonState()
       this.alterFormState()
       animationComponent = <Text />
@@ -75,7 +85,6 @@ class Home extends Component {
   getStyleSheets (value, ruleType) {
     let styleSheets = document.styleSheets
     let searchProp = ruleType === 'keyframe' ? 'name' : 'selectorText'
-
 
     if(searchProp === 'name') {
       this.setAnimationName(value)

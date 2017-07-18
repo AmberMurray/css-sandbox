@@ -1,4 +1,4 @@
-@keyframes bounceIn {
+@keyframes fadeIn {
   0% {
     transform: scale(0.1);
     opacity: 0;
@@ -12,26 +12,27 @@
   }
 }
 
-.bounce {
-  animation: bounceIn 2s;
+.fadeIn {
+  animation: fadeIn 5s;
   color: #3db3d1;
 }
 
-@keyframes bounceOut {
+@keyframes fadeOut {
   0% {
-    transform: scale(0.1);
-    opacity: 0;
+    transform: scale(1);
+    color: #3db3d1;
   }
   60% {
     transform: scale(1.2);
     opacity: 1;
   }
   100% {
-    transform: scale(1);
+    transform: scale(0.1);
+    opacity: 0;
   }
 }
 
-.jump {
-  animation: bounceOut 2s;
-  color: #3db3d1;
+.fadeOut {
+  animation: fadeOut 2s;
+  color: #fff;
 }

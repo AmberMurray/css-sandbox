@@ -52,16 +52,20 @@ class CodeEditor extends Component {
     console.log('this is searchParam:', searchParam)
     console.log('this is keyframerule:', this.state.keyframeRule);
     console.log('this is animaitonName:', this.state.keyframeName)
-    console.log('this is searchProp:', searchProp); 
+    console.log('this is searchProp:', searchProp);
 
     for(let i = 0; i < styleSheets.length; i++) {
-      console.log('first part of the loop', i);
 	    if(styleSheets[i].cssRules) {
         for (let j = 0; j < styleSheets[i].cssRules.length; j++ ) {
           if(styleSheets[i].cssRules[j][searchProp] === searchParam) {
-            console.log('rule to be deleted:', styleSheets[i].cssRules[j])
-            styleSheets[i].deleteRule(j)
-            styleSheets[i].insertRule(newValue, 0)
+            if(searchProp === 'keyframe') {
+                styleSheets[i].deleteRule(j)
+                styleSheets[i].insertRule(this.state.cssRule, 0)
+                styleSheets[i].insertRule(this.state.keyframeRule, 0)
+            } else {
+              styleSheets[i].deleteRule(j)
+              styleSheets[i].insertRule(newValue, 0)
+            }
           }
         }
       }
@@ -70,10 +74,8 @@ class CodeEditor extends Component {
 
   handleClick(e) {
     try {
-      console.log(this.state.keyframeRule);
       if(this.state.keyframeRule) {
-        // this.updateStyleSheets(this.state.cssRule, this.state.className)
-        this.updateStyleSheets(this.state.cssRule + '\n \n' + this.state.keyframeRule, this.state.keyframeName)
+        this.updateStyleSheets(this.state.cssRule + this.state.keyframeRule, this.state.keyframeName)
       } else {
         this.updateStyleSheets(this.state.cssRule, this.state.className)
       }
@@ -84,6 +86,7 @@ class CodeEditor extends Component {
   }
 
   render() {
+    console.log(this.props);
 
     return (
       <div>

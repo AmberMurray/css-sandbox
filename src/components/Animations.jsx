@@ -21,6 +21,7 @@ class Animations extends Component {
   }
 
   render() {
+    // console.log(this.props.getStyleSheets());
 
     return (
       <div>
@@ -30,10 +31,10 @@ class Animations extends Component {
           </label>
         </div>
         <div>
-          <select id="animation" onChange={this.handleChange.bind(this)}>
+          <select id="animations" onChange={this.handleChange.bind(this)}>
             <option id="animation-choice" value="play">Play!</option>
-            <option id='bounce' value="bounce">Bounce</option>
-            <option id='jump' value="jump">Jump</option>
+            <option id='fadeIn' value="fadeIn">Fade In</option>
+            <option id='fadeOut' value="fadeOut">Fade Out</option>
           </select>
         </div>
       </div>
