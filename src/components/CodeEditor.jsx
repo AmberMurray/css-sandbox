@@ -13,7 +13,7 @@ class CodeEditor extends Component {
     super(props)
 
     this.state = {
-      cssRule: '',
+      cssRule: "",
       className: '',
       keyframeRule: "",
       keyframeName: '',
@@ -38,7 +38,6 @@ class CodeEditor extends Component {
 
   onChange (newValue) {
     if(this.state.keyframeName){
-      // let trimRule = newValue.replace(/\n|\r/g, "")
       let ruleSplit = newValue.split('@')
       this.setState({ cssRule: ruleSplit[0], keyframeRule: '@' + ruleSplit[1] })
     } else {
@@ -49,19 +48,6 @@ class CodeEditor extends Component {
   updateStyleSheets (newValue, searchParam) {
     let styleSheets = document.styleSheets
     let searchProp = this.props.animationName ? 'name' : 'selectorText'
-
-    console.log(newValue);
-    console.log(this.state.cssRule);
-    console.log(this.state.keyframeRule);
-    console.log(typeof this.state.keyframeRule);
-
-    // $('#text-guy').css('color', 'red')
-    // $( "#text-guy" ).animate({
-    //   opacity: 0.25,
-    //   left: "+=50",
-    //   height: "toggle"
-    // })
-
 
     for(let i = 0; i < styleSheets.length; i++) {
 	    if(styleSheets[i].cssRules) {
