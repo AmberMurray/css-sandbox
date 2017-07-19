@@ -67,39 +67,37 @@ class Home extends Component {
   }
 
   alterButtonState (value, cssText, id) {
-    // let classes = this.getSelectOptionsValues(id)
+    let classes = this.getSelectOptionsValues(id)
     let buttonComponent
 
-    // classes.forEach(name => {
-    //   if(value == name) {
-    //     // this.alterAnimationState()
-    //     // this.alterFormState()
-    //     buttonComponent = <Button />
-    //     } else {
-    //       buttonComponent = null
-    //     }
-    //     this.setState({ buttons: value, buttonComponent, currentClass: value, text:cssText })
-
-
-
-    if(value === 'press' || value === 'basic') {
-      this.alterAnimationState()
-      this.alterFormState()
-      buttonComponent = <Button />
+    if (classes.length > 0) {
+      classes.forEach(name => {
+        if(value === name) {
+          this.alterAnimationState()
+          this.alterFormState()
+          buttonComponent = <Button />
+        }
+      })
     } else {
-      buttonComponent = null
+       buttonComponent = null
     }
     this.setState({ buttons: value, buttonComponent, currentClass: value, text:cssText })
   }
 
-  alterFormState (value, cssText) {
+  alterFormState (value, cssText, id) {
+    let classes = this.getSelectOptionsValues(id)
     let formComponent
-    if(value === 'fun') {
-      this.alterAnimationState()
-      this.alterButtonState()
-      formComponent = <Form />
-    }  else {
-      formComponent = null
+
+    if (classes.length > 0) {
+      classes.forEach(name => {
+        if(value === name) {
+          this.alterAnimationState()
+          this.alterButtonState()
+          formComponent = <Form />
+        }
+      })
+    } else {
+       formComponent = null
     }
     this.setState({ forms: value, formComponent, currentClass: value, text: cssText })
   }
@@ -184,7 +182,7 @@ class Home extends Component {
               buttonClass={this.state.buttons}
               formComponent={this.state.formComponent}
               formClass={this.state.forms}
-              currentClass={this.state.currentClass}
+              // currentClass={this.state.currentClass}
               getStyleSheets={this.getStyleSheets}
               animationName={this.state.animationName}
               forceRender={this.forceRender}

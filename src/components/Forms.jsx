@@ -31,7 +31,7 @@ class Forms extends Component {
           </label>
         </div>
         <div>
-          <select id="form" onChange={this.handleChange.bind(this)}>
+          <select id="forms" onChange={this.handleChange.bind(this)}>
             <option id="form-choice" value="choose one">Choose One!</option>
             <option id='fun' value="fun">Fun</option>
           </select>
