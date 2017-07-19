@@ -13,7 +13,7 @@ class CodeEditor extends Component {
     super(props)
 
     this.state = {
-      cssRule: "",
+      cssRule: '',
       className: '',
       keyframeRule: "",
       keyframeName: '',
@@ -38,6 +38,7 @@ class CodeEditor extends Component {
 
   onChange (newValue) {
     if(this.state.keyframeName){
+      // let trimRule = newValue.replace(/\n|\r/g, "")
       let ruleSplit = newValue.split('@')
       this.setState({ cssRule: ruleSplit[0], keyframeRule: '@' + ruleSplit[1] })
     } else {
@@ -53,6 +54,7 @@ class CodeEditor extends Component {
 	    if(styleSheets[i].cssRules) {
         for (let j = 0; j < styleSheets[i].cssRules.length; j++ ) {
           if(styleSheets[i].cssRules[j][searchProp] === searchParam && searchProp === 'name' ) {
+            console.log(styleSheets[i].deleteRule(j));
                 styleSheets[i].deleteRule(j)
                 styleSheets[i].insertRule(this.state.cssRule, 0)
                 styleSheets[i].insertRule(this.state.keyframeRule, 1)
