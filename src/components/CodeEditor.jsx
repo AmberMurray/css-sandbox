@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import AceEditor from 'react-ace'
+import $ from 'jquery'
 
 import 'brace/mode/css'
 import 'brace/theme/chrome'
@@ -14,7 +15,7 @@ class CodeEditor extends Component {
     this.state = {
       cssRule: '',
       className: '',
-      keyframeRule: '',
+      keyframeRule: "",
       keyframeName: '',
     }
 
@@ -37,8 +38,8 @@ class CodeEditor extends Component {
 
   onChange (newValue) {
     if(this.state.keyframeName){
-      let trimRule = newValue.replace(/\n|\r/g, "")
-      let ruleSplit = trimRule.split('@')
+      // let trimRule = newValue.replace(/\n|\r/g, "")
+      let ruleSplit = newValue.split('@')
       this.setState({ cssRule: ruleSplit[0], keyframeRule: '@' + ruleSplit[1] })
     } else {
       this.setState({ cssRule: newValue})
@@ -49,17 +50,24 @@ class CodeEditor extends Component {
     let styleSheets = document.styleSheets
     let searchProp = this.props.animationName ? 'name' : 'selectorText'
 
-    console.log('this is cssRule:',this.state.cssRule)
-    console.log('this is searchParam:', searchParam)
-    console.log('this is keyframerule:', this.state.keyframeRule);
-    console.log('this is animationName:', this.state.keyframeName)
-    console.log('this is searchProp:', searchProp);
+    console.log(newValue);
+    console.log(this.state.cssRule);
+    console.log(this.state.keyframeRule);
+    console.log(typeof this.state.keyframeRule);
+
+    // $('#text-guy').css('color', 'red')
+    // $( "#text-guy" ).animate({
+    //   opacity: 0.25,
+    //   left: "+=50",
+    //   height: "toggle"
+    // })
+
 
     for(let i = 0; i < styleSheets.length; i++) {
 	    if(styleSheets[i].cssRules) {
         for (let j = 0; j < styleSheets[i].cssRules.length; j++ ) {
           if(styleSheets[i].cssRules[j][searchProp] === searchParam && searchProp === 'name' ) {
-              console.log('trying to insert/delete keyframe');
+            console.log('i am deleting stuff', styleSheets[i].deleteRule(j));
                 styleSheets[i].deleteRule(j)
                 styleSheets[i].insertRule(this.state.cssRule, 0)
                 styleSheets[i].insertRule(this.state.keyframeRule, 1)
@@ -73,6 +81,7 @@ class CodeEditor extends Component {
     }
 
   handleClick(e) {
+
     try {
       if(this.state.keyframeRule) {
         this.updateStyleSheets(this.state.cssRule + this.state.keyframeRule, this.state.keyframeName)

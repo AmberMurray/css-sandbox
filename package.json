@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "brace": "^0.10.0",
+    "jquery": "^3.2.1",
     "react": "^15.6.1",
     "react-ace": "^5.1.0",
     "react-ace-editor": "0.0.2",

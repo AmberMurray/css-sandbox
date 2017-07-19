@@ -8,7 +8,7 @@ class Text extends Component {
 
     return (
       <div className={'resource-display-text'}>
-        <h1><span className={this.props.className}>Hello</span></h1>
+        <h1><span id='text-guy' className={this.props.className}>Hello</span></h1>
       </div>
     )
   }

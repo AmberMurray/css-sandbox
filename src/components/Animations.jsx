@@ -21,7 +21,6 @@ class Animations extends Component {
   }
 
   render() {
-    // console.log(this.props.getStyleSheets());
 
     return (
       <div>

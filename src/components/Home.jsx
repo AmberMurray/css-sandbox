@@ -22,7 +22,7 @@ class Home extends Component {
       forms: 'Choose One!',
       formComponent: null,
       currentClass: this.props.animationClass || this.props.buttonClass || this.props.formClass,
-      animationName: ''
+      animationName: '',
       }
 
     this.alterAnimationState = this.alterAnimationState.bind(this)
@@ -44,7 +44,7 @@ class Home extends Component {
 
   alterAnimationState (value, cssText) {
     let animationComponent
-    if(value === 'fadeIn' || value === 'fadeOut') {
+    if(value === 'fadeIn' || value === 'fadeOut' || value === 'something' || value === 'more:hover') {
       this.alterButtonState()
       this.alterFormState()
       animationComponent = <Text />
@@ -56,7 +56,7 @@ class Home extends Component {
 
   alterButtonState (value, cssText) {
     let buttonComponent
-    if(value === 'press' || value ===   'basic') {
+    if(value === 'press' || value === 'basic') {
       this.alterAnimationState()
       this.alterFormState()
       buttonComponent = <Button />

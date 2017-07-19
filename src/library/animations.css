@@ -36,3 +36,19 @@
   animation: fadeOut 2s;
   color: #fff;
 }
+
+
+.something {
+  width: 100px;
+  height: 100px;
+  color: #3db3d1;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  transition: 0.5s;
+  opacity: 0;
+}
+
+.more:hover {
+  color: blue;
+}
