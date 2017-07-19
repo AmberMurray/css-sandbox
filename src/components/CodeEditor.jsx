@@ -54,7 +54,7 @@ class CodeEditor extends Component {
 	    if(styleSheets[i].cssRules) {
         for (let j = 0; j < styleSheets[i].cssRules.length; j++ ) {
           if(styleSheets[i].cssRules[j][searchProp] === searchParam && searchProp === 'name' ) {
-            console.log(styleSheets[i].deleteRule(j));
+                styleSheets[i].deleteRule(j)
                 styleSheets[i].deleteRule(j)
                 styleSheets[i].insertRule(this.state.cssRule, 0)
                 styleSheets[i].insertRule(this.state.keyframeRule, 1)
