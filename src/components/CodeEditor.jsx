@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import AceEditor from 'react-ace'
-import $ from 'jquery'
 
 import 'brace/mode/css'
 import 'brace/theme/chrome'
@@ -38,7 +37,6 @@ class CodeEditor extends Component {
 
   onChange (newValue) {
     if(this.state.keyframeName){
-      // let trimRule = newValue.replace(/\n|\r/g, "")
       let ruleSplit = newValue.split('@')
       this.setState({ cssRule: ruleSplit[0], keyframeRule: '@' + ruleSplit[1] })
     } else {
@@ -65,6 +63,7 @@ class CodeEditor extends Component {
           }
         }
       }
+      // this.props.forceRender()
     }
 
   handleClick(e) {

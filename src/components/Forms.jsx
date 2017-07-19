@@ -15,9 +15,9 @@ class Forms extends Component {
       let animationName = newArray[animationIndex+1]
       let keyframeText = this.props.getStyleSheets(animationName, 'keyframe')
 
-      this.props.alterFormState(e.target.value, cssText + '\n \n' + keyframeText)
+      this.props.alterFormState(e.target.value, cssText + '\n \n' + keyframeText, 'forms')
     } else {
-      this.props.alterFormState(e.target.value, cssText)
+      this.props.alterFormState(e.target.value, cssText, 'forms')
     }
   }
 

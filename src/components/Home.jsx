@@ -23,6 +23,7 @@ class Home extends Component {
       formComponent: null,
       currentClass: this.props.animationClass || this.props.buttonClass || this.props.formClass,
       animationName: '',
+      rerenderState: false,
       }
 
     this.alterAnimationState = this.alterAnimationState.bind(this)
@@ -31,31 +32,56 @@ class Home extends Component {
     this.getStyleSheets = this.getStyleSheets.bind(this)
     this.setAnimationName = this.setAnimationName.bind(this)
     this.getSelectOptionsValues = this.getSelectOptionsValues.bind(this)
+    this.forceRender = this.forceRender.bind(this)
   }
 
-  getSelectOptionsValues () {
-  // let select = document.getElementById('animations')
-  // let txt = ''
-  //
-  //   for (i = 0; i < x.length; i++) {
-  //       txt = txt + x.options[i].text + "<br>";
-  //   }
+  getSelectOptionsValues (id) {
+    let classes = []
+
+    if (id) {
+      let select = document.getElementById(id)
+
+      for(let i = 0; i < select.length; i++) {
+        classes.push(select[i].value)
+      }
+    }
+    return classes
   }
 
-  alterAnimationState (value, cssText) {
+  alterAnimationState (value, cssText, id) {
+    let classes = this.getSelectOptionsValues(id)
     let animationComponent
-    if(value === 'fadeIn' || value === 'fadeOut' || value === 'something' || value === 'more:hover') {
-      this.alterButtonState()
-      this.alterFormState()
-      animationComponent = <Text />
+
+    if (classes.length > 0) {
+      classes.forEach(name => {
+        if(value === name) {
+          this.alterButtonState()
+          this.alterFormState()
+          animationComponent = <Text />
+        }
+      })
     } else {
       animationComponent = null
     }
     this.setState({ animations: value, animationComponent, currentClass: value, text: cssText })
   }
 
-  alterButtonState (value, cssText) {
+  alterButtonState (value, cssText, id) {
+    // let classes = this.getSelectOptionsValues(id)
     let buttonComponent
+
+    // classes.forEach(name => {
+    //   if(value == name) {
+    //     // this.alterAnimationState()
+    //     // this.alterFormState()
+    //     buttonComponent = <Button />
+    //     } else {
+    //       buttonComponent = null
+    //     }
+    //     this.setState({ buttons: value, buttonComponent, currentClass: value, text:cssText })
+
+
+
     if(value === 'press' || value === 'basic') {
       this.alterAnimationState()
       this.alterFormState()
@@ -104,6 +130,14 @@ class Home extends Component {
     }
   }
 
+  forceRender () {
+    if (!this.state.rerenderState) {
+      this.setState({ rerenderState: true })
+    } else {
+      this.setState({ rerenderState: false })
+    }
+  }
+
   render() {
 
     return (
@@ -138,6 +172,7 @@ class Home extends Component {
               buttonClass={this.state.buttons}
               formComponent={this.state.formComponent}
               formClass={this.state.forms}
+              rerenderState={this.state.rerenderState}
             />
           </div>
           <div className='code-display' id='ace_content'>
@@ -152,6 +187,7 @@ class Home extends Component {
               currentClass={this.state.currentClass}
               getStyleSheets={this.getStyleSheets}
               animationName={this.state.animationName}
+              forceRender={this.forceRender}
             />
           </div>
         </div>

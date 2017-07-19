@@ -14,9 +14,9 @@ class Animations extends Component {
       let animationName = newArray[animationIndex+1]
       let keyframeText = this.props.getStyleSheets(animationName, 'keyframe')
 
-      this.props.alterAnimationState(e.target.value, cssText + '\n \n' + keyframeText)
+      this.props.alterAnimationState(e.target.value, cssText + '\n \n' + keyframeText, 'animations')
     } else {
-      this.props.alterAnimationState(e.target.value, cssText)
+      this.props.alterAnimationState(e.target.value, cssText, 'animations')
     }
   }
 

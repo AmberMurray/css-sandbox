@@ -14,9 +14,9 @@ class Buttons extends Component {
       let animationName = newArray[animationIndex+1]
       let keyframeText = this.props.getStyleSheets(animationName, 'keyframe')
 
-      this.props.alterButtonState(e.target.value, cssText + '\n \n' + keyframeText)
+      this.props.alterButtonState(e.target.value, cssText + '\n \n' + keyframeText, 'buttons')
     } else {
-      this.props.alterButtonState(e.target.value, cssText)
+      this.props.alterButtonState(e.target.value, cssText, 'buttons')
     }
   }
 
@@ -30,7 +30,7 @@ class Buttons extends Component {
           </label>
         </div>
         <div>
-          <select id="button" onChange={this.handleChange.bind(this)}>
+          <select id="buttons" onChange={this.handleChange.bind(this)}>
             <option id="button-choice" value="try it out">Try It Out!</option>
             <option id='basic' value="basic">Basic</option>
             <option id='press' value="press">Press</option>
