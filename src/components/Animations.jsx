@@ -3,28 +3,67 @@ import '../styles/resources.css'
 
 class Animations extends Component {
 
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      originalText: '',
+      animationName: null,
+      counter: 0,
+    }
+  }
+
   handleChange (e) {
-    let searchTerm = '.' + e.target.value
-    let cssText = this.props.getStyleSheets(searchTerm, 'dotClass')
 
+  if(this.state.counter === 0) {
     try{
-      let newArray = cssText.split(' ')
-      let animationIndex = newArray.indexOf('animation:')
+      let searchTerm = '.' + e.target.value
+      let cssText = this.props.getStyleSheets(searchTerm, 'dotClass')
 
-      if(animationIndex !== -1) {
-        let animationName = newArray[animationIndex+1]
-        let keyframeText = this.props.getStyleSheets(animationName, 'keyframe')
+        let newArray = cssText.split(' ')
+        let animationIndex = newArray.indexOf('animation:')
 
-        this.props.alterAnimationState(e.target.value, cssText + '\n \n' + keyframeText, 'animations')
-      } else {
-        this.props.alterAnimationState(e.target.value, cssText, 'animations')
+        if(animationIndex !== -1) {
+          let animationName = newArray[animationIndex+1]
+          let keyframeText = this.props.getStyleSheets(animationName, 'keyframe')
+
+          this.props.alterAnimationState(e.target.value, cssText + '\n \n' + keyframeText, 'animations')
+
+          this.setState({
+            originalText: cssText + '\n \n' + keyframeText,
+            animaitonName: animationName,
+            counter: this.state.counter ++,
+          })
+
+        } else {
+          this.props.alterAnimationState(e.target.value, cssText, 'animations')
+
+          this.setState({
+            originalText: cssText,
+            counter: this.state.counter ++,
+          })
+
+        }
+      } catch (error) {
+        window.location.reload()
       }
-    } catch (error) {
-      window.location.reload()
+
+    } else if(this.state.counter !== 0) {
+      try {
+        if(this.state.animationName) {
+          this.props.alterAnimationState(e.target.value, this.state.originalText, 'animations')
+        } else {
+          this.props.alterAnimationState(e.target.value, this.state.originalText, 'animations')
+        }
+      } catch (error) {
+        window.location.reload()
+      }
     }
   }
 
   render() {
+
+    console.log(this.state.counter);
 
     return (
       <div>

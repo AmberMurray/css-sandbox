@@ -9,20 +9,21 @@ import Text from './Text'
 import Button from './Button'
 import Form from './Form'
 
+let initialState = {
+  animations: 'Play!',
+  animationComponent: <Text />,
+  text: '',
+  buttons: 'Try It Out!',
+  buttonComponent: null,
+  forms: 'Choose One!',
+  formComponent: null,
+  animationName: '',  
+}
+
 class Home extends Component {
   constructor (props) {
     super(props)
-
-    this.state = {
-      animations: 'Play!',
-      animationComponent: <Text />,
-      text: '',
-      buttons: 'Try It Out!',
-      buttonComponent: null,
-      forms: 'Choose One!',
-      formComponent: null,
-      animationName: '',
-      }
+    this.state = initialState
 
     this.alterAnimationState = this.alterAnimationState.bind(this)
     this.alterButtonState = this.alterButtonState.bind(this)
@@ -30,6 +31,28 @@ class Home extends Component {
     this.getStyleSheets = this.getStyleSheets.bind(this)
     this.setAnimationName = this.setAnimationName.bind(this)
     this.getSelectOptionsValues = this.getSelectOptionsValues.bind(this)
+    this.reset = this.reset.bind(this)
+    this.deleteStyleSheets = this.deleteStyleSheets.bind(this)
+  }
+
+  deleteStyleSheets () {
+    console.log('original', this.state.originalText);
+    console.log('text', this.state.text);
+    this.setState({ text: this.state.originalText })
+    // for (var i = 0; i < styleSheets.length; i++) {
+    //   if (styleSheets[i].cssRules) {
+    //     for (var j = 0; j < styleSheets[i].cssRules.length; j++) {
+    //       console.log('second loop', styleSheets[i]);
+    //       // console.log(styleSheets[i].deleteRule(j));
+    //       // styleSheets[i].deleteRule(j)
+    //     }
+    //   }
+    // }
+  }
+
+  reset() {
+    this.deleteStyleSheets()
+    this.setState({ initialState })
   }
 
   getSelectOptionsValues (id) {
@@ -60,7 +83,7 @@ class Home extends Component {
     } else {
       animationComponent = null
     }
-    this.setState({ animations: value, animationComponent, text: cssText })
+    this.setState({ animations: value, animationComponent, text: cssText, originalText: cssText })
   }
 
   alterButtonState (value, cssText, id) {
@@ -136,18 +159,21 @@ class Home extends Component {
               <Animations
                 alterAnimationState={this.alterAnimationState}
                 getStyleSheets={this.getStyleSheets}
+                reset={this.reset}
               />
             </div>
             <div className='buttons-select'>
               <Buttons
                 alterButtonState={this.alterButtonState}
                 getStyleSheets={this.getStyleSheets}
+                reset={this.reset}
               />
             </div>
             <div className='forms-select'>
               <Forms
               alterFormState={this.alterFormState}
               getStyleSheets={this.getStyleSheets}
+              reset={this.reset}
               />
             </div>
           </div>

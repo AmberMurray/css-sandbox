@@ -16,7 +16,7 @@ class CodeEditor extends Component {
       className: '',
       keyframeRule: "",
       keyframeName: '',
-      text: '',
+      editorText: ''
     }
 
     this.onChange = this.onChange.bind(this)
@@ -33,16 +33,15 @@ class CodeEditor extends Component {
     } else {
       className = nextProps.formClass
     }
-    this.setState({ text: nextProps.text, className: '.' + className, keyframeName: nextProps.animationName })
+    this.setState({ editorText: nextProps.text, className: '.' + className, keyframeName: nextProps.animationName })
   }
 
   onChange (newValue) {
-    console.log(newValue);
     if(this.state.keyframeName){
       let ruleSplit = newValue.split('@')
-      this.setState({ cssRule: ruleSplit[0], keyframeRule: '@' + ruleSplit[1], text: newValue })
+      this.setState({ cssRule: ruleSplit[0], keyframeRule: '@' + ruleSplit[1], editorText: newValue })
     } else {
-      this.setState({ cssRule: newValue, text: newValue})
+      this.setState({ cssRule: newValue, editorText: newValue})
     }
   }
 
@@ -65,7 +64,6 @@ class CodeEditor extends Component {
           }
         }
       }
-      // this.props.forceRender()
     }
 
   handleClick(e) {
@@ -98,7 +96,7 @@ class CodeEditor extends Component {
            enableSnippets={true}
            showGutter={true}
            tabSize={2}
-           value={this.state.text}
+           value={this.state.editorText}
            width={'95%'}
            wrapEnabled={true}
         />
