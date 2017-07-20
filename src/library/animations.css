@@ -34,7 +34,7 @@
 }
 
 .fadeOut {
-  animation: fadeOut 2s;
+  animation: fadeOut 2s infinite;
   color: #fff;
 }
 

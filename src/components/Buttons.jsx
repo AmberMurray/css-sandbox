@@ -7,16 +7,20 @@ class Buttons extends Component {
     let searchTerm = '.' + e.target.value
     let cssText = this.props.getStyleSheets(searchTerm, 'dotClass')
 
-    let newArray = cssText.split(' ')
-    let animationIndex = newArray.indexOf('animation:')
+    try{
+      let newArray = cssText.split(' ')
+      let animationIndex = newArray.indexOf('animation:')
 
-    if(animationIndex !== -1) {
-      let animationName = newArray[animationIndex+1]
-      let keyframeText = this.props.getStyleSheets(animationName, 'keyframe')
+      if(animationIndex !== -1) {
+        let animationName = newArray[animationIndex+1]
+        let keyframeText = this.props.getStyleSheets(animationName, 'keyframe')
 
-      this.props.alterButtonState(e.target.value, cssText + '\n \n' + keyframeText, 'buttons')
-    } else {
-      this.props.alterButtonState(e.target.value, cssText, 'buttons')
+        this.props.alterButtonState(e.target.value, cssText + '\n \n' + keyframeText, 'buttons')
+      } else {
+        this.props.alterButtonState(e.target.value, cssText, 'buttons')
+      }
+    } catch (error) {
+      window.location.reload()
     }
   }
 

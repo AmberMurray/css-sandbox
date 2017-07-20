@@ -21,9 +21,7 @@ class Home extends Component {
       buttonComponent: null,
       forms: 'Choose One!',
       formComponent: null,
-      currentClass: this.props.animationClass || this.props.buttonClass || this.props.formClass,
       animationName: '',
-      rerenderState: false,
       }
 
     this.alterAnimationState = this.alterAnimationState.bind(this)
@@ -32,7 +30,6 @@ class Home extends Component {
     this.getStyleSheets = this.getStyleSheets.bind(this)
     this.setAnimationName = this.setAnimationName.bind(this)
     this.getSelectOptionsValues = this.getSelectOptionsValues.bind(this)
-    this.forceRender = this.forceRender.bind(this)
   }
 
   getSelectOptionsValues (id) {
@@ -63,7 +60,7 @@ class Home extends Component {
     } else {
       animationComponent = null
     }
-    this.setState({ animations: value, animationComponent, currentClass: value, text: cssText })
+    this.setState({ animations: value, animationComponent, text: cssText })
   }
 
   alterButtonState (value, cssText, id) {
@@ -81,7 +78,7 @@ class Home extends Component {
     } else {
        buttonComponent = null
     }
-    this.setState({ buttons: value, buttonComponent, currentClass: value, text:cssText })
+    this.setState({ buttons: value, buttonComponent, text:cssText })
   }
 
   alterFormState (value, cssText, id) {
@@ -99,7 +96,7 @@ class Home extends Component {
     } else {
        formComponent = null
     }
-    this.setState({ forms: value, formComponent, currentClass: value, text: cssText })
+    this.setState({ forms: value, formComponent, text: cssText })
   }
 
   setAnimationName (value) {
@@ -125,14 +122,6 @@ class Home extends Component {
           }
         }
       }
-    }
-  }
-
-  forceRender () {
-    if (!this.state.rerenderState) {
-      this.setState({ rerenderState: true })
-    } else {
-      this.setState({ rerenderState: false })
     }
   }
 
@@ -170,7 +159,6 @@ class Home extends Component {
               buttonClass={this.state.buttons}
               formComponent={this.state.formComponent}
               formClass={this.state.forms}
-              rerenderState={this.state.rerenderState}
             />
           </div>
           <div className='code-display' id='ace_content'>
@@ -182,10 +170,8 @@ class Home extends Component {
               buttonClass={this.state.buttons}
               formComponent={this.state.formComponent}
               formClass={this.state.forms}
-              // currentClass={this.state.currentClass}
               getStyleSheets={this.getStyleSheets}
               animationName={this.state.animationName}
-              forceRender={this.forceRender}
             />
           </div>
         </div>

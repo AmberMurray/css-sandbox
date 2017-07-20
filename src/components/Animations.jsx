@@ -7,16 +7,20 @@ class Animations extends Component {
     let searchTerm = '.' + e.target.value
     let cssText = this.props.getStyleSheets(searchTerm, 'dotClass')
 
-    let newArray = cssText.split(' ')
-    let animationIndex = newArray.indexOf('animation:')
+    try{
+      let newArray = cssText.split(' ')
+      let animationIndex = newArray.indexOf('animation:')
 
-    if(animationIndex !== -1) {
-      let animationName = newArray[animationIndex+1]
-      let keyframeText = this.props.getStyleSheets(animationName, 'keyframe')
+      if(animationIndex !== -1) {
+        let animationName = newArray[animationIndex+1]
+        let keyframeText = this.props.getStyleSheets(animationName, 'keyframe')
 
-      this.props.alterAnimationState(e.target.value, cssText + '\n \n' + keyframeText, 'animations')
-    } else {
-      this.props.alterAnimationState(e.target.value, cssText, 'animations')
+        this.props.alterAnimationState(e.target.value, cssText + '\n \n' + keyframeText, 'animations')
+      } else {
+        this.props.alterAnimationState(e.target.value, cssText, 'animations')
+      }
+    } catch (error) {
+      window.location.reload()
     }
   }
 
