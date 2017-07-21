@@ -4,7 +4,6 @@ import '../styles/resources.css'
 class Buttons extends Component {
 
   handleChange (e) {
-    this.props.reset()
     let searchTerm = '.' + e.target.value
     let cssText = this.props.getStyleSheets(searchTerm, 'dotClass')
 

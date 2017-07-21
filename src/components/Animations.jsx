@@ -8,8 +8,12 @@ class Animations extends Component {
 
     this.state = {
       originalText: '',
+      cssText: '',
+      keyframeText: '',
       animationName: null,
       counter: 0,
+      name: '',
+      selectorText: '',
     }
   }
 
@@ -31,8 +35,12 @@ class Animations extends Component {
 
           this.setState({
             originalText: cssText + '\n \n' + keyframeText,
+            cssText: cssText,
+            keyframeText: keyframeText,
             animaitonName: animationName,
-            counter: this.state.counter ++,
+            counter: 10,
+            name: e.target.value,
+            selectorText: searchTerm,
           })
 
         } else {
@@ -40,7 +48,9 @@ class Animations extends Component {
 
           this.setState({
             originalText: cssText,
-            counter: this.state.counter ++,
+            cssText: cssText,
+            counter: 10,
+            selectorText: searchTerm,
           })
 
         }
@@ -50,6 +60,20 @@ class Animations extends Component {
 
     } else if(this.state.counter !== 0) {
       try {
+        let styleSheets = document.styleSheets
+
+        for(let i =0; i < styleSheets.length; i++) {
+          if(styleSheets[i].cssRules) {
+            for(let j = 0; j < styleSheets[i].cssRules.length; j++) {
+              if(styleSheets[i].cssRules[j].name === this.state.name || styleSheets[i].cssRules[j].selectorText === this.state.selectorText ) {
+                styleSheets[i].deleteRule(j)
+                styleSheets[i].insertRule(this.state.cssRule, 0)
+                styleSheets[i].insertRule(this.state.keyframeRule, 1)
+              }
+            }
+          }
+        }
+
         if(this.state.animationName) {
           this.props.alterAnimationState(e.target.value, this.state.originalText, 'animations')
         } else {
@@ -62,8 +86,6 @@ class Animations extends Component {
   }
 
   render() {
-
-    console.log(this.state.counter);
 
     return (
       <div>

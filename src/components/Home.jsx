@@ -17,7 +17,7 @@ let initialState = {
   buttonComponent: null,
   forms: 'Choose One!',
   formComponent: null,
-  animationName: '',  
+  animationName: '',
 }
 
 class Home extends Component {
@@ -31,28 +31,6 @@ class Home extends Component {
     this.getStyleSheets = this.getStyleSheets.bind(this)
     this.setAnimationName = this.setAnimationName.bind(this)
     this.getSelectOptionsValues = this.getSelectOptionsValues.bind(this)
-    this.reset = this.reset.bind(this)
-    this.deleteStyleSheets = this.deleteStyleSheets.bind(this)
-  }
-
-  deleteStyleSheets () {
-    console.log('original', this.state.originalText);
-    console.log('text', this.state.text);
-    this.setState({ text: this.state.originalText })
-    // for (var i = 0; i < styleSheets.length; i++) {
-    //   if (styleSheets[i].cssRules) {
-    //     for (var j = 0; j < styleSheets[i].cssRules.length; j++) {
-    //       console.log('second loop', styleSheets[i]);
-    //       // console.log(styleSheets[i].deleteRule(j));
-    //       // styleSheets[i].deleteRule(j)
-    //     }
-    //   }
-    // }
-  }
-
-  reset() {
-    this.deleteStyleSheets()
-    this.setState({ initialState })
   }
 
   getSelectOptionsValues (id) {
