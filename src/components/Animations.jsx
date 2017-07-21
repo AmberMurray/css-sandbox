@@ -33,12 +33,17 @@ class Animations extends Component {
 
         }
       } catch (error) {
-        alert('You did bad:', error)
+        window.location.reload()
       }
 
     } else {
       try {
         let addlSearchTerm = e.target.value
+
+        if (addlSearchTerm === 'play') {
+          window.location.reload()
+        }
+
         let keyframeRule = ''
         let cssRule = ''
         let keyframeValue = ''
@@ -79,14 +84,12 @@ class Animations extends Component {
         }
 
       } catch (error) {
-        alert('You no good:', + error)
+        window.location.reload()
       }
     }
   }
 
   render() {
-
-    console.log(this.state.counter);
 
     return (
       <div>

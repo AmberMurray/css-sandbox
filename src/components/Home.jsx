@@ -183,7 +183,6 @@ class Home extends Component {
                 alterButtonState={this.alterButtonState}
                 getStyleSheets={this.getStyleSheets}
                 options={this.state.options.buttons}
-
               />
             </div>
             <div className='forms-select'>

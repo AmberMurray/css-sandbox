@@ -35,8 +35,14 @@ class Buttons extends Component {
         alert('You did bad:', error)
       }
     } else {
+
       try {
         let addlSearchTerm = e.target.value
+
+        if (addlSearchTerm === 'try it out') {
+          window.location.reload()
+        }
+
         let keyframeRule = ''
         let cssRule = ''
         let keyframeValue = ''
