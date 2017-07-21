@@ -13,7 +13,7 @@
 }
 
 .fadeIn {
-  animation: fadeIn 5s;
+  animation: fadeIn 5s infinite;
   color: #3db3d1;
 }
 
