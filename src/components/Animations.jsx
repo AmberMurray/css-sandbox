@@ -3,19 +3,6 @@ import '../styles/resources.css'
 
 class Animations extends Component {
 
-  constructor(props) {
-    super(props)
-
-    this.state = {
-      originalText: '',
-      cssText: '',
-      keyframeText: '',
-      animationName: null,
-      counter: 0,
-      name: '',
-      selectorText: '',
-    }
-  }
 
   handleChange (e) {
 

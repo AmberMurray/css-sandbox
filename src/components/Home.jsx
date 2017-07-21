@@ -18,6 +18,8 @@ let initialState = {
   forms: 'Choose One!',
   formComponent: null,
   animationName: '',
+  id: ['animations', 'buttons', 'forms'],
+  options: {'animations': {}, 'buttons': {}, 'forms': {}},
 }
 
 class Home extends Component {
@@ -31,6 +33,44 @@ class Home extends Component {
     this.getStyleSheets = this.getStyleSheets.bind(this)
     this.setAnimationName = this.setAnimationName.bind(this)
     this.getSelectOptionsValues = this.getSelectOptionsValues.bind(this)
+  }
+
+  componentDidMount () {
+    let styleSheets = document.styleSheets
+    let self = this
+    for ( let m = 0; m < this.state.id.length; m++) {
+
+        let select = document.getElementById(this.state.id[m])
+        console.log('select', select);
+
+        for(let i = 0; i < select.length; i++) {
+
+          let choice ={}
+          choice.cssValue = '.' + select[i].value
+          choice.keyframeValue = select[i].value
+          Array.from(styleSheets).forEach(styleSheet => {
+            if(!styleSheet.cssRules) {
+              return
+            }
+            Array.from(styleSheet.cssRules).forEach(rule => {
+              // will match if is a keyFrameRule
+              if (choice.keyframeValue === rule.name) {
+                choice.keyframeText = rule.cssText
+              }
+              // will match if is a non-keyframe rule
+              if (choice.cssValue === rule.selectorText) {
+                choice.cssText = rule.cssText
+              }
+            })
+          })
+
+          let newOptions = self.state.options
+
+          newOptions[self.state.id[m]][choice.keyframeValue] = choice
+          self.setState({options: newOptions})
+        }
+      }
+
   }
 
   getSelectOptionsValues (id) {
@@ -127,6 +167,8 @@ class Home extends Component {
   }
 
   render() {
+
+    console.log('options', this.state.options);
 
     return (
       <div>
