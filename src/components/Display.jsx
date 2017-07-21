@@ -3,11 +3,6 @@ import '../styles/resources.css'
 
 class Display extends Component {
 
-  // componentWillReceiveProps () {
-  //   console.log('i did an update!!!!!');
-  //   this.forceUpdate()
-  // }
-
   render() {
 
     return (

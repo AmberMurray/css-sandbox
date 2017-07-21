@@ -5,19 +5,20 @@
   }
   60% {
     transform: scale(1.2);
-    opacity: 1;
+    opacity: 0.7;
   }
   100% {
+    opacity: 1;
     transform: scale(1);
   }
 }
 
 .fadeIn {
-  animation: fadeIn 5s infinite;
+  animation: fadeIn 5s ease;
   color: #3db3d1;
 }
 
-@keyframes fadeOut {
+/*@keyframes fadeOut {
   0% {
     transform: scale(1);
     color: #3db3d1;
@@ -33,19 +34,16 @@
 }
 
 .fadeOut {
-  animation: fadeOut 2s;
+  animation: fadeOut 2s infinite;
   color: #fff;
-}
+}*/
 
 
-.something {
+.fadeOut {
   width: 100px;
   height: 100px;
   color: #3db3d1;
-  -webkit-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -o-transition: 0.5s;
-  transition: 0.5s;
+  transition: 1.0s;
   opacity: 0;
 }
 

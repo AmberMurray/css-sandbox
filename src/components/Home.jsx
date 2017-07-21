@@ -9,22 +9,23 @@ import Text from './Text'
 import Button from './Button'
 import Form from './Form'
 
+let initialState = {
+  animations: 'Play!',
+  animationComponent: <Text />,
+  text: '',
+  buttons: 'Try It Out!',
+  buttonComponent: null,
+  forms: 'Choose One!',
+  formComponent: null,
+  animationName: '',
+  id: ['animations', 'buttons', 'forms'],
+  options: {'animations': {}, 'buttons': {}, 'forms': {}},
+}
+
 class Home extends Component {
   constructor (props) {
     super(props)
-
-    this.state = {
-      animations: 'Play!',
-      animationComponent: <Text />,
-      text: '',
-      buttons: 'Try It Out!',
-      buttonComponent: null,
-      forms: 'Choose One!',
-      formComponent: null,
-      currentClass: this.props.animationClass || this.props.buttonClass || this.props.formClass,
-      animationName: '',
-      rerenderState: false,
-      }
+    this.state = initialState
 
     this.alterAnimationState = this.alterAnimationState.bind(this)
     this.alterButtonState = this.alterButtonState.bind(this)
@@ -32,7 +33,42 @@ class Home extends Component {
     this.getStyleSheets = this.getStyleSheets.bind(this)
     this.setAnimationName = this.setAnimationName.bind(this)
     this.getSelectOptionsValues = this.getSelectOptionsValues.bind(this)
-    this.forceRender = this.forceRender.bind(this)
+  }
+
+  componentDidMount () {
+    let styleSheets = document.styleSheets
+    let self = this
+    for ( let m = 0; m < this.state.id.length; m++) {
+        let select = document.getElementById(this.state.id[m])
+
+        for(let i = 0; i < select.length; i++) {
+
+        let choice ={}
+        choice.cssValue = '.' + select[i].value
+        choice.keyframeValue = select[i].value
+
+        Array.from(styleSheets).forEach(styleSheet => {
+          if(!styleSheet.cssRules) {
+            return
+          }
+          Array.from(styleSheet.cssRules).forEach(rule => {
+            // will match if is a keyFrameRule
+            if (choice.keyframeValue === rule.name) {
+              choice.keyframeText = rule.cssText
+            }
+            // will match if is a non-keyframe rule
+            if (choice.cssValue === rule.selectorText) {
+              choice.cssText = rule.cssText
+            }
+          })
+        })
+
+        let newOptions = self.state.options
+
+        newOptions[self.state.id[m]][choice.keyframeValue] = choice
+        self.setState({options: newOptions})
+      }
+    }
   }
 
   getSelectOptionsValues (id) {
@@ -63,45 +99,43 @@ class Home extends Component {
     } else {
       animationComponent = null
     }
-    this.setState({ animations: value, animationComponent, currentClass: value, text: cssText })
+    this.setState({ animations: value, animationComponent, text: cssText, originalText: cssText })
   }
 
   alterButtonState (value, cssText, id) {
-    // let classes = this.getSelectOptionsValues(id)
+    let classes = this.getSelectOptionsValues(id)
     let buttonComponent
 
-    // classes.forEach(name => {
-    //   if(value == name) {
-    //     // this.alterAnimationState()
-    //     // this.alterFormState()
-    //     buttonComponent = <Button />
-    //     } else {
-    //       buttonComponent = null
-    //     }
-    //     this.setState({ buttons: value, buttonComponent, currentClass: value, text:cssText })
-
-
-
-    if(value === 'press' || value === 'basic') {
-      this.alterAnimationState()
-      this.alterFormState()
-      buttonComponent = <Button />
+    if (classes.length > 0) {
+      classes.forEach(name => {
+        if(value === name) {
+          this.alterAnimationState()
+          this.alterFormState()
+          buttonComponent = <Button />
+        }
+      })
     } else {
-      buttonComponent = null
+       buttonComponent = null
     }
-    this.setState({ buttons: value, buttonComponent, currentClass: value, text:cssText })
+    this.setState({ buttons: value, buttonComponent, text:cssText })
   }
 
-  alterFormState (value, cssText) {
+  alterFormState (value, cssText, id) {
+    let classes = this.getSelectOptionsValues(id)
     let formComponent
-    if(value === 'fun') {
-      this.alterAnimationState()
-      this.alterButtonState()
-      formComponent = <Form />
-    }  else {
-      formComponent = null
+
+    if (classes.length > 0) {
+      classes.forEach(name => {
+        if(value === name) {
+          this.alterAnimationState()
+          this.alterButtonState()
+          formComponent = <Form />
+        }
+      })
+    } else {
+       formComponent = null
     }
-    this.setState({ forms: value, formComponent, currentClass: value, text: cssText })
+    this.setState({ forms: value, formComponent, text: cssText })
   }
 
   setAnimationName (value) {
@@ -130,14 +164,6 @@ class Home extends Component {
     }
   }
 
-  forceRender () {
-    if (!this.state.rerenderState) {
-      this.setState({ rerenderState: true })
-    } else {
-      this.setState({ rerenderState: false })
-    }
-  }
-
   render() {
 
     return (
@@ -149,18 +175,21 @@ class Home extends Component {
               <Animations
                 alterAnimationState={this.alterAnimationState}
                 getStyleSheets={this.getStyleSheets}
+                options={this.state.options.animations}
               />
             </div>
             <div className='buttons-select'>
               <Buttons
                 alterButtonState={this.alterButtonState}
                 getStyleSheets={this.getStyleSheets}
+                options={this.state.options.buttons}
               />
             </div>
             <div className='forms-select'>
               <Forms
               alterFormState={this.alterFormState}
               getStyleSheets={this.getStyleSheets}
+              options={this.state.options.forms}
               />
             </div>
           </div>
@@ -172,7 +201,6 @@ class Home extends Component {
               buttonClass={this.state.buttons}
               formComponent={this.state.formComponent}
               formClass={this.state.forms}
-              rerenderState={this.state.rerenderState}
             />
           </div>
           <div className='code-display' id='ace_content'>
@@ -184,10 +212,8 @@ class Home extends Component {
               buttonClass={this.state.buttons}
               formComponent={this.state.formComponent}
               formClass={this.state.forms}
-              currentClass={this.state.currentClass}
               getStyleSheets={this.getStyleSheets}
               animationName={this.state.animationName}
-              forceRender={this.forceRender}
             />
           </div>
         </div>

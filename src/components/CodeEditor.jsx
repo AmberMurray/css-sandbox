@@ -16,6 +16,7 @@ class CodeEditor extends Component {
       className: '',
       keyframeRule: "",
       keyframeName: '',
+      editorText: ''
     }
 
     this.onChange = this.onChange.bind(this)
@@ -32,15 +33,15 @@ class CodeEditor extends Component {
     } else {
       className = nextProps.formClass
     }
-    this.setState({ cssRule: nextProps.text, className: '.' + className, keyframeName: nextProps.animationName })
+    this.setState({ editorText: nextProps.text, className: '.' + className, keyframeName: nextProps.animationName })
   }
 
   onChange (newValue) {
     if(this.state.keyframeName){
       let ruleSplit = newValue.split('@')
-      this.setState({ cssRule: ruleSplit[0], keyframeRule: '@' + ruleSplit[1] })
+      this.setState({ cssRule: ruleSplit[0], keyframeRule: '@' + ruleSplit[1], editorText: newValue })
     } else {
-      this.setState({ cssRule: newValue})
+      this.setState({ cssRule: newValue, editorText: newValue})
     }
   }
 
@@ -63,11 +64,9 @@ class CodeEditor extends Component {
           }
         }
       }
-      // this.props.forceRender()
     }
 
   handleClick(e) {
-
     try {
       if(this.state.keyframeRule) {
         this.updateStyleSheets(this.state.cssRule + this.state.keyframeRule, this.state.keyframeName)
@@ -76,11 +75,13 @@ class CodeEditor extends Component {
       }
     }
     catch (error) {
-      console.log('You suck because ' + error);
+      alert('You did bad 💩!  Your error is:', error)
     }
   }
 
   render() {
+
+    console.log();
 
     return (
       <div>
@@ -95,7 +96,7 @@ class CodeEditor extends Component {
            enableSnippets={true}
            showGutter={true}
            tabSize={2}
-           value={this.state.cssRule + this.state.keyframeRule}
+           value={this.state.editorText}
            width={'95%'}
            wrapEnabled={true}
         />
