@@ -2,11 +2,15 @@ import React, { Component } from 'react'
 import '../styles/resources.css'
 
 class Animations extends Component {
+  constructor(props) {
+    super(props)
 
+    this.state = { counter: true,}
+  }
 
   handleChange (e) {
 
-  if(this.state.counter === 0) {
+  if(this.state.counter) {
     try{
       let searchTerm = '.' + e.target.value
       let cssText = this.props.getStyleSheets(searchTerm, 'dotClass')
@@ -20,59 +24,69 @@ class Animations extends Component {
 
           this.props.alterAnimationState(e.target.value, cssText + '\n \n' + keyframeText, 'animations')
 
-          this.setState({
-            originalText: cssText + '\n \n' + keyframeText,
-            cssText: cssText,
-            keyframeText: keyframeText,
-            animaitonName: animationName,
-            counter: 10,
-            name: e.target.value,
-            selectorText: searchTerm,
-          })
+          this.setState({ counter: false })
 
         } else {
           this.props.alterAnimationState(e.target.value, cssText, 'animations')
 
-          this.setState({
-            originalText: cssText,
-            cssText: cssText,
-            counter: 10,
-            selectorText: searchTerm,
-          })
+          this.setState({ counter: false })
 
         }
       } catch (error) {
-        window.location.reload()
+        alert('You did bad:', error)
       }
 
-    } else if(this.state.counter !== 0) {
+    } else {
       try {
+        let addlSearchTerm = e.target.value
+        let keyframeRule = ''
+        let cssRule = ''
+        let keyframeValue = ''
+        let cssValue = ''
         let styleSheets = document.styleSheets
 
+        //find where user selection matches dropdown value & set text rules
+        for(let optionsKey in this.props.options) {
+          if(addlSearchTerm === optionsKey) {
+            cssRule = this.props.options[optionsKey].cssText
+            keyframeRule = this.props.options[optionsKey].keyframeText
+            keyframeValue = this.props.options[optionsKey].keyframeValue
+            cssValue = '.' + this.props.options[optionsKey].keyframeValue
+          }
+        }
+
+        //find where user selection matches existing style sheet(s), delete them and replace with original stylesheet text values
         for(let i =0; i < styleSheets.length; i++) {
           if(styleSheets[i].cssRules) {
             for(let j = 0; j < styleSheets[i].cssRules.length; j++) {
-              if(styleSheets[i].cssRules[j].name === this.state.name || styleSheets[i].cssRules[j].selectorText === this.state.selectorText ) {
+              if(styleSheets[i].cssRules[j].name === keyframeValue) {
                 styleSheets[i].deleteRule(j)
-                styleSheets[i].insertRule(this.state.cssRule, 0)
-                styleSheets[i].insertRule(this.state.keyframeRule, 1)
+                styleSheets[i].insertRule(cssRule, 0)
+                styleSheets[i].insertRule(keyframeRule, 1)
+              }
+              if(styleSheets[i].cssRules[j].selectorText === cssValue) {
+                styleSheets[i].deleteRule(j)
+                styleSheets[i].insertRule(cssRule, 0)
               }
             }
           }
         }
 
-        if(this.state.animationName) {
-          this.props.alterAnimationState(e.target.value, this.state.originalText, 'animations')
+        if(keyframeRule) {
+          this.props.alterAnimationState(e.target.value, cssRule + '\n \n' + keyframeRule, 'animations')
         } else {
-          this.props.alterAnimationState(e.target.value, this.state.originalText, 'animations')
+          this.props.alterAnimationState(e.target.value, cssRule, 'animations')
         }
+
       } catch (error) {
-        window.location.reload()
+        alert('You no good:', + error)
       }
     }
   }
 
   render() {
+
+    console.log(this.state.counter);
 
     return (
       <div>

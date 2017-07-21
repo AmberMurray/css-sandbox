@@ -39,38 +39,36 @@ class Home extends Component {
     let styleSheets = document.styleSheets
     let self = this
     for ( let m = 0; m < this.state.id.length; m++) {
-
         let select = document.getElementById(this.state.id[m])
-        console.log('select', select);
 
         for(let i = 0; i < select.length; i++) {
 
-          let choice ={}
-          choice.cssValue = '.' + select[i].value
-          choice.keyframeValue = select[i].value
-          Array.from(styleSheets).forEach(styleSheet => {
-            if(!styleSheet.cssRules) {
-              return
+        let choice ={}
+        choice.cssValue = '.' + select[i].value
+        choice.keyframeValue = select[i].value
+
+        Array.from(styleSheets).forEach(styleSheet => {
+          if(!styleSheet.cssRules) {
+            return
+          }
+          Array.from(styleSheet.cssRules).forEach(rule => {
+            // will match if is a keyFrameRule
+            if (choice.keyframeValue === rule.name) {
+              choice.keyframeText = rule.cssText
             }
-            Array.from(styleSheet.cssRules).forEach(rule => {
-              // will match if is a keyFrameRule
-              if (choice.keyframeValue === rule.name) {
-                choice.keyframeText = rule.cssText
-              }
-              // will match if is a non-keyframe rule
-              if (choice.cssValue === rule.selectorText) {
-                choice.cssText = rule.cssText
-              }
-            })
+            // will match if is a non-keyframe rule
+            if (choice.cssValue === rule.selectorText) {
+              choice.cssText = rule.cssText
+            }
           })
+        })
 
-          let newOptions = self.state.options
+        let newOptions = self.state.options
 
-          newOptions[self.state.id[m]][choice.keyframeValue] = choice
-          self.setState({options: newOptions})
-        }
+        newOptions[self.state.id[m]][choice.keyframeValue] = choice
+        self.setState({options: newOptions})
       }
-
+    }
   }
 
   getSelectOptionsValues (id) {
@@ -168,8 +166,6 @@ class Home extends Component {
 
   render() {
 
-    console.log('options', this.state.options);
-
     return (
       <div>
         <h2 className='home-title'>CSS Sandbox</h2>
@@ -179,21 +175,22 @@ class Home extends Component {
               <Animations
                 alterAnimationState={this.alterAnimationState}
                 getStyleSheets={this.getStyleSheets}
-                reset={this.reset}
+                options={this.state.options.animations}
               />
             </div>
             <div className='buttons-select'>
               <Buttons
                 alterButtonState={this.alterButtonState}
                 getStyleSheets={this.getStyleSheets}
-                reset={this.reset}
+                options={this.state.options.buttons}
+
               />
             </div>
             <div className='forms-select'>
               <Forms
               alterFormState={this.alterFormState}
               getStyleSheets={this.getStyleSheets}
-              reset={this.reset}
+              options={this.state.options.forms}
               />
             </div>
           </div>
