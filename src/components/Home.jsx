@@ -99,7 +99,7 @@ class Home extends Component {
     } else {
       animationComponent = null
     }
-    this.setState({ animations: value, animationComponent, text: cssText, originalText: cssText })
+    this.setState({ animations: value, animationComponent, text: cssText })
   }
 
   alterButtonState (value, cssText, id) {

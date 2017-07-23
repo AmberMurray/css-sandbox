@@ -34,18 +34,19 @@ select {
   align-items: center;
   justify-content: center;
   text-align: center;
-  font-family: 'Special Elite', 'Avenir';
   vertical-align: middle;
 }
 
-.resource-display-text h1 {
+.resource-display-text {
   font-size: 50px;
   color: #4c5051;
+  font-family: 'Special Elite', 'Avenir';
 }
 
 .resource-display-form input {
   border: 1px solid #737576;
   height: 50px;
+  font-family: 'Special Elite', 'Avenir';
 }
 
 .resource-display-button {

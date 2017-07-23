@@ -102,7 +102,8 @@ class Animations extends Component {
           <select id="animations" onChange={this.handleChange.bind(this)}>
             <option id="animation-choice" value="play">Play!</option>
             <option id='fadeIn' value="fadeIn">Fade In</option>
-            <option id='fadeOut' value="fadeOut">Fade Out</option>
+            <option id='flash' value="flash">Flash</option>
+            <option id='rotate' value="rotate">Rotate</option>
           </select>
         </div>
       </div>

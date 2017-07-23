@@ -5,7 +5,7 @@
   }
   60% {
     transform: scale(1.2);
-    opacity: 0.7;
+    opacity: 0.8;
   }
   100% {
     opacity: 1;
@@ -14,39 +14,36 @@
 }
 
 .fadeIn {
-  animation: fadeIn 5s ease;
+  animation: fadeIn 3s ease infinite;
   color: #3db3d1;
 }
 
-/*@keyframes fadeOut {
+
+@keyframes flash {
   0% {
-    transform: scale(1);
-    color: #3db3d1;
-  }
-  60% {
-    transform: scale(1.2);
     opacity: 1;
   }
-  100% {
-    transform: scale(0.1);
+
+  25% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1
+  }
+
+  75% {
     opacity: 0;
   }
 }
 
-.fadeOut {
-  animation: fadeOut 2s infinite;
-  color: #fff;
-}*/
-
-
-.fadeOut {
-  width: 100px;
-  height: 100px;
-  color: #3db3d1;
-  transition: 1.0s;
-  opacity: 0;
+.flash {
+  animation: flash 5s ease infinite;
+  color: #767abf;
 }
 
-.more:hover {
-  color: blue;
+.rotate {
+  color: #ed6aea;
+  transform: translate(50px, 50px) rotate(90deg);
+  transition: transform 600ms cubic-bezier(0.14, 1.16, 0.96, 1.34);
 }
