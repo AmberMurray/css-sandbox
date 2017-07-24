@@ -1,4 +1,4 @@
-![](/md-assets/csssandboxname.jpg)
+![](/md-assets/csssandboxname.png)
 
 CSS Sandbox was designed to give folks a place to play with CSS.  If you've ever thought CSS wasn't for you, or if you just wondered about the native functionality of CSS - come play in the Sandbox!  Change font colors, learn how animations work, or design a button to use in your own project.
 
