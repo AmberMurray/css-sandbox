@@ -4,7 +4,7 @@ CSS Sandbox was designed to give folks a place to play with CSS.  If you've ever
 
 Check it out here: https://csssandbox.herokuapp.com/
 
-You are also welcome to fork and/or clone this repo. Run npm install from the command line to download all the fun! Open the app in any browser via http://localhost:3000/ (or the port of your choice). Enjoy!
+You are also welcome to fork and/or clone this repo. Run `npm install` and `npm start` from the command line to download all the fun and run it! Open the app in any browser via http://localhost:3000/ (or the port of your choice). Enjoy!
 
 
 # Features

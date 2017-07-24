@@ -54,3 +54,12 @@
   width: 50%;
   height: 20%;
 }
+
+.github-link {
+  font-family: 'Special Elite', 'Avenir';
+  text-align: center;
+}
+
+.github-link-text {
+  text-decoration: none;
+}

@@ -27,12 +27,12 @@ class Animations extends Component {
           this.props.alterAnimationState(e.target.value, allText, 'animations')
 
           this.setState({ counter: false })
-
+          console.log('above else:', this.state);
         } else {
           this.props.alterAnimationState(e.target.value, cssText, 'animations')
 
           this.setState({ counter: false })
-
+          console.log(this.state);
         }
       } catch (error) {
         window.location.reload()

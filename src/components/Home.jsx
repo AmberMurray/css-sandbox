@@ -87,7 +87,7 @@ class Home extends Component {
 
   formatText (text) {
     let newText = text.replace(/;/g, ';\n')
-    console.log(newText);
+    // console.log(newText);
     return newText
   }
 
@@ -230,9 +230,9 @@ class Home extends Component {
             />
           </div>
         </div>
-        <div>
-        <a href={'https://github.com/AmberMurray/css-sandbox'} target='_blank'>
-        <h2>View the sandbox on GitHub</h2>
+        <div className='github-link'>
+        <a className='github-link-text' href={'https://github.com/AmberMurray/css-sandbox'} target='_blank'>
+        <h2>View on GitHub</h2>
         </a>
         </div>
       </div>
