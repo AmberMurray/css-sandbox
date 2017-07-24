@@ -33,6 +33,7 @@ class Home extends Component {
     this.getStyleSheets = this.getStyleSheets.bind(this)
     this.setAnimationName = this.setAnimationName.bind(this)
     this.getSelectOptionsValues = this.getSelectOptionsValues.bind(this)
+    this.formatText = this.formatText.bind(this)
   }
 
   componentDidMount () {
@@ -84,9 +85,16 @@ class Home extends Component {
     return classes
   }
 
+  formatText (text) {
+    let newText = text.replace(/;/g, ';\n')
+    console.log(newText);
+    return newText
+  }
+
   alterAnimationState (value, cssText, id) {
     let classes = this.getSelectOptionsValues(id)
     let animationComponent
+    let formatted
 
     if (classes.length > 0) {
       classes.forEach(name => {
@@ -94,17 +102,19 @@ class Home extends Component {
           this.alterButtonState()
           this.alterFormState()
           animationComponent = <Text />
+          formatted = this.formatText(cssText)
         }
       })
     } else {
       animationComponent = null
     }
-    this.setState({ animations: value, animationComponent, text: cssText })
+    this.setState({ animations: value, animationComponent, text: formatted })
   }
 
   alterButtonState (value, cssText, id) {
     let classes = this.getSelectOptionsValues(id)
     let buttonComponent
+    let formatted
 
     if (classes.length > 0) {
       classes.forEach(name => {
@@ -112,17 +122,19 @@ class Home extends Component {
           this.alterAnimationState()
           this.alterFormState()
           buttonComponent = <Button />
+          formatted = this.formatText(cssText)
         }
       })
     } else {
        buttonComponent = null
     }
-    this.setState({ buttons: value, buttonComponent, text:cssText })
+    this.setState({ buttons: value, buttonComponent, text:formatted })
   }
 
   alterFormState (value, cssText, id) {
     let classes = this.getSelectOptionsValues(id)
     let formComponent
+    let formatted
 
     if (classes.length > 0) {
       classes.forEach(name => {
@@ -130,12 +142,13 @@ class Home extends Component {
           this.alterAnimationState()
           this.alterButtonState()
           formComponent = <Form />
+          formatted = this.formatText(cssText)
         }
       })
     } else {
        formComponent = null
     }
-    this.setState({ forms: value, formComponent, text: cssText })
+    this.setState({ forms: value, formComponent, text: formatted })
   }
 
   setAnimationName (value) {

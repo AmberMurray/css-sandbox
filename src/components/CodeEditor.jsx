@@ -57,7 +57,7 @@ class CodeEditor extends Component {
                 styleSheets[i].deleteRule(j)
                 styleSheets[i].insertRule(this.state.cssRule, 0)
                 styleSheets[i].insertRule(this.state.keyframeRule, 1)
-            }  else if(styleSheets[i].cssRules[j][searchProp] === searchParam) {
+            } else if (styleSheets[i].cssRules[j][searchProp] === searchParam) {
               styleSheets[i].deleteRule(j)
               styleSheets[i].insertRule(newValue, 0)
             }
@@ -75,7 +75,7 @@ class CodeEditor extends Component {
       }
     }
     catch (error) {
-      alert('You did bad 💩!  Your error is:', error)
+      alert('You have made an error. \nTry refreshing the page and play on.')
     }
   }
 
@@ -95,7 +95,7 @@ class CodeEditor extends Component {
            enableLiveAutocompletion={true}
            enableSnippets={true}
            showGutter={true}
-           tabSize={2}
+           tabSize={4}
            value={this.state.editorText}
            width={'95%'}
            wrapEnabled={true}

@@ -17,7 +17,7 @@
   animation: fadeIn;
   animation-duration: 3s;
   animation-timing-function: ease;
-  animation-iteration-count: 200;
+  animation-iteration-count: infinite;
   color: #3db3d1;
 }
 
@@ -32,7 +32,7 @@
   }
 
   50% {
-    opacity: 1
+    opacity: 1;
   }
 
   75% {
@@ -74,9 +74,8 @@
   animation: slideUp;
   animation-duration: 3s;
   animation-timing-function: ease-in-out;
-  animation-iteration-count: 200;
+  animation-iteration-count: 2;
   animation-direction: alternate;
-
   color: #3db3d1;
 }
 
