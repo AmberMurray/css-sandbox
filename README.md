@@ -11,7 +11,7 @@ You are also welcome to fork and/or clone this repo. Run npm install from the co
 The Sandbox features dropdown lists for animations, buttons, and forms, a display, and a code editor.  
 
 
-![](/md-assets/csssandbox.png)  
+![](/md-assets/demo.gif)  
 
 Once you make a selection, you'll see your choice in real-time in the display, and you can view the code in the editor.  Make changes to the code, press submit, and presto! - you've created your own custom CSS Code!
 
