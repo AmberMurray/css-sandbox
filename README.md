@@ -1,6 +1,6 @@
-![](/public/md-assets/csssandboxname.png)
+![](/md-assets/csssandboxname.png)
 
-BYOF (Bring Your Own Food) is an app created by Amber Murray and Kay Krewson that connects your favorite bars where you bring your own grub, with your favorite food truck, making every day the best day ever!
+CSS Sandbox was designed to give folks a place to play with CSS.  If you've ever thought CSS wasn't for you, or if you just wondered about the native functionality of CSS - come play in the Sandbox!  Change font colors, learn how animations work, or design a button to use in your own project.
 
 Check it out here: https://csssandbox.herokuapp.com/
 
@@ -8,8 +8,8 @@ You are also welcome to fork and/or clone this repo. Run npm install from the co
 
 
 # Features
+The Sandbox features dropdown lists for animations, buttons, and forms.  
 
-CSS Sandbox was designed to give folks a place to play with CSS.  If you've ever thought CSS wasn't for you, or if you just wondered about the native functionality of CSS - come play in the Sandbox!  Change font colors, learn how animations work, or design a button to use in your own project. 
 
 
 
