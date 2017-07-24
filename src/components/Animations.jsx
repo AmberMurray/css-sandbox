@@ -103,7 +103,7 @@ class Animations extends Component {
             <option id="animation-choice" value="play">Play!</option>
             <option id='fadeIn' value="fadeIn">Fade In</option>
             <option id='flash' value="flash">Flash</option>
-            <option id='rotate' value="rotate">Rotate</option>
+            <option id='rotate' value="rotate">Rotate Right</option>
           </select>
         </div>
       </div>
