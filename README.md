@@ -1,4 +1,4 @@
-![](/md-assets/csssandboxname.png)
+# CSS Sandbox
 
 CSS Sandbox was designed to give folks a place to play with CSS.  If you've ever thought CSS wasn't for you, or if you just wondered about the native functionality of CSS - come play in the Sandbox!  Change font colors, learn how animations work, or design a button to use in your own project.
 
@@ -8,38 +8,21 @@ You are also welcome to fork and/or clone this repo. Run npm install from the co
 
 
 # Features
-The Sandbox features dropdown lists for animations, buttons, and forms.  
+The Sandbox features dropdown lists for animations, buttons, and forms, a display, and a code editor.  
+
+
+![](/md-assets/csssandbox.jpg)  
+
+Once you make a selection, you'll see your choice in real-time in the display, and you can view the code in the editor.  Make changes to the code, press submit, and presto! - you've created your own custom CSS Code!
+
+CSS Sandbox was created using only CSS, so you can copy and paste the code directly into your own stylesheet.  Change the class name to your liking and apply the class name to your favorite element.  Your projects just became awesome!
 
 
 
 
-# Food Truck Info
-See all the important details for a particular truck in one place.  Each bar listed in the "Bar's I'm Visiting Today" table is a link to a local watering hole. Read the opinion of other food truck foodies and contribute your two cents.
-
-![](/public/md-assets/demo.mp4)
-
-
-
-# Bar Info
-Find out if you can only get a hoppy IPA or if Johnny, Jack, and Jim will be joining you for dinner!
-
-![](/public/md-media/bar-info.png)
-
-
-
-# Favorite Food Trucks
-Save your favorite mobile meals in one place. Give 'em a thumbs down if your tastebuds disagree.
-
-![](/public/md-media/favorites-food-trucks.png)
-
-
-
-# Technologies
-
-| Front End  | Back End | Database |
-| ------------- | ------------- |------------- |
-| Materialize  | Express  | PostgreSQL  |
-| HTML5  | Node  | Knex.js |
-| CSS3 | Handlebars  | Socrata API |
-| JavaScript  |   |  |
-| Heroku |   |  |
+# Technologies  
+React  
+HTML  
+JavaScript  
+CSS  
+Ace Code Editor (react-ace version)  
