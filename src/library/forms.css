@@ -1,7 +1,10 @@
-button, input, {
+button, input {
   -webkit-appearance: none;
 }
 
-.fun {
-  background-color: pink;
+.minimal {
+  background-color: #fff;
+  border: 1px solid #737576;
+  height: 50px;
+  font-family: 'Special Elite', 'Avenir'
 }

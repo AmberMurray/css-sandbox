@@ -1,4 +1,4 @@
-button, input, {
+button, input {
   -webkit-appearance: none;
 }
 
@@ -43,10 +43,8 @@ select {
   font-family: 'Special Elite', 'Avenir';
 }
 
-.resource-display-form input {
-  border: 1px solid #737576;
+.resource-display-form {
   height: 50px;
-  font-family: 'Special Elite', 'Avenir';
 }
 
 .resource-display-button {

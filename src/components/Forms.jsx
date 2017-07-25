@@ -16,6 +16,8 @@ class Forms extends Component {
       let searchTerm = '.' + e.target.value
       let cssText = this.props.getStyleSheets(searchTerm, 'dotClass')
 
+      console.log(cssText);
+
         let newArray = cssText.split(' ')
         let animationIndex = newArray.indexOf('animation:')
 
@@ -23,11 +25,15 @@ class Forms extends Component {
           let animationName = newArray[animationIndex+1]
           let keyframeText = this.props.getStyleSheets(animationName, 'keyframe')
 
-          this.props.alterFormState(e.target.value, cssText + '\n \n' + keyframeText, 'forms')
+          let allText = cssText.concat('\n\n' + keyframeText)
+
+          this.props.alterFormState(e.target.value, allText, 'forms')
 
           this.setState({ counter: false })
 
         } else {
+
+          console.log(cssText);
           this.props.alterFormState(e.target.value, cssText, 'forms')
 
           this.setState({ counter: false })
@@ -101,7 +107,7 @@ class Forms extends Component {
         <div>
           <select id="forms" onChange={this.handleChange.bind(this)}>
             <option id="form-choice" value="choose one">Choose One!</option>
-            <option id='fun' value="fun">Fun</option>
+            <option id='minimal' value="minimal">Minimal</option>
           </select>
         </div>
       </div>
