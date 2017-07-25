@@ -86,8 +86,11 @@ class Home extends Component {
   }
 
   formatText (text) {
-    let newText = text.replace(/;/g, ';\n')
-    return newText
+    let spaceSemi = text.replace(/;/g, ';\n')
+    let spaceOpen = spaceSemi.replace(/{/g, '{\n')
+    let spaceClose = spaceOpen.replace(/}/g, '}\n')
+    
+    return spaceClose
   }
 
   alterAnimationState (value, cssText, id) {

@@ -13,6 +13,7 @@ class Forms extends Component {
 
   if(this.state.counter) {
     try {
+      console.log(e.target.value);
       let searchTerm = '.' + e.target.value
       let cssText = this.props.getStyleSheets(searchTerm, 'dotClass')
 
@@ -43,7 +44,7 @@ class Forms extends Component {
     } else {
       try {
         let addlSearchTerm = e.target.value
-
+          console.log(e.target.value);
         if (addlSearchTerm === 'choose one') {
           window.location.reload()
         }
@@ -106,6 +107,8 @@ class Forms extends Component {
           <select id="forms" onChange={this.handleChange.bind(this)}>
             <option id="form-choice" value="choose one">Choose One!</option>
             <option id='base' value="base">Base</option>
+            <option id='grow' value="grow:hover">Grow</option>
+            <option id='jump' value="jump">Jump</option>
           </select>
         </div>
       </div>
