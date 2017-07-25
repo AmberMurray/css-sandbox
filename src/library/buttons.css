@@ -20,40 +20,6 @@ button, input, {
   border: 5px red dashed;
 }
 
-@-webkit-keyframes bounceIn {
-
-  0% {
-    opacity: 0;
-    transform: translate3d(3000px, 0, 0);
-  }
-
-  60% {
-    opacity: 1;
-    transform: translate3d(-25px, 0, 0);
-  }
-
-  75% {
-    transform: translate3d(10px, 0, 0);
-  }
-
-  90% {
-    transform: translate3d(-5px, 0, 0);
-  }
-
-  to {
-    transform: none;
-  }
-}
-
-.bounceIn {
-  animation-name: bounceIn;
-}
-
-.wavyUnderline {
-  text-decoration: underline;
-  text-decoration-style: wavy;
-}
-
 .clip {
   border: 10px dotted black;
   padding: 35px;
@@ -75,4 +41,27 @@ button, input, {
 
 .rounded {
   border-radius: 30px;
+}
+
+@keyframes shake {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  10%, 30%, 50%, 70%, 90% {
+    transform: translate3d(-10px, 0, 0);
+  }
+
+  20%, 40%, 60%, 80% {
+    transform: translate3d(10px, 0, 0);
+  }
+}
+
+.shake {
+  animation: shake 1s 20;
+}
+
+.wavyUnderline {
+  text-decoration: underline;
+  text-decoration-style: wavy;
 }

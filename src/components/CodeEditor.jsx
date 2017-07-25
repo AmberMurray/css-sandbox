@@ -44,8 +44,6 @@ class CodeEditor extends Component {
     } else {
       this.setState({ cssRule: newValue, editorText: newValue })
     }
-
-    console.log(this.state);
   }
 
   updateStyleSheets (newValue, searchParam) {
@@ -83,8 +81,6 @@ class CodeEditor extends Component {
   }
 
   render() {
-
-    console.log();
 
     return (
       <div>
