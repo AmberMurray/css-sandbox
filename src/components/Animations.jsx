@@ -27,12 +27,10 @@ class Animations extends Component {
           this.props.alterAnimationState(e.target.value, allText, 'animations')
 
           this.setState({ counter: false })
-          console.log('above else:', this.state);
         } else {
           this.props.alterAnimationState(e.target.value, cssText, 'animations')
 
           this.setState({ counter: false })
-          console.log(this.state);
         }
       } catch (error) {
         window.location.reload()
@@ -42,7 +40,7 @@ class Animations extends Component {
       try {
         let addlSearchTerm = e.target.value
 
-        if (addlSearchTerm === 'play') {
+        if (addlSearchTerm === 'select') {
           window.location.reload()
         }
 
@@ -102,7 +100,7 @@ class Animations extends Component {
         </div>
         <div>
           <select id="animations" onChange={this.handleChange.bind(this)}>
-            <option id="animation-choice" value="play">Play!</option>
+            <option id="animation-choice" value="select">Select One!</option>
             <option id='fadeIn' value="fadeIn">Fade In</option>
             <option id='flash' value="flash">Flash</option>
             <option id='rotate' value="rotate">Rotate Right</option>

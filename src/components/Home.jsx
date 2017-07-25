@@ -10,7 +10,7 @@ import Button from './Button'
 import Form from './Form'
 
 let initialState = {
-  animations: 'Play!',
+  animations: 'Select One!',
   animationComponent: <Text />,
   text: '',
   buttons: 'Try It Out!',
