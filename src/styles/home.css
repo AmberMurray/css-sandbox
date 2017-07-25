@@ -36,6 +36,10 @@
   border: 1px solid #737576;
 }
 
+.dropdowns {
+  margin-right: 0;
+}
+
 #ace_content {
   margin: 10px auto;
 }
@@ -62,4 +66,5 @@
 
 .github-link-text {
   text-decoration: none;
+  letter-spacing: 0.08em;
 }
