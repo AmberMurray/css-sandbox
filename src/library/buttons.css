@@ -12,16 +12,36 @@ button, input, {
 }
 
 .backgroundImage {
-  background-image: url('http://2.bp.blogspot.com/-D6NFfi7bVJo/UyBpf_MY27I/AAAAAAAAcpA/xemTnL4nfxw/s1600/cloud_paper_button.png');
+  background-image: url('../assets/clouds.png');
 }
+
 
 .border {
   border: 5px red dashed;
 }
 
+.wavyUnderline {
+  text-decoration: underline;
+  text-decoration-style: wavy;
+}
+
+.clip {
+  border: 10px dotted black;
+  padding: 35px;
+  background: pink;
+  background-clip: padding-box;
+}
+
 .color {
   background-color: #2bcaf2;
   color: #fff;
+}
+
+.gradient {
+  background-color: white;
+  background-size: 200px 100px;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(to right, #0be849 0%, white 100%);
 }
 
 .rounded {

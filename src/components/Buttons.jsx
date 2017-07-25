@@ -104,8 +104,11 @@ class Buttons extends Component {
             <option id='basic' value="basic">Basic</option>
             <option id='backgroundImage' value="backgroundImage">Background Image</option>
             <option id='border' value="border">Border</option>
+            <option id='clip' value="clip">Clip</option>
             <option id='color' value="color">Color</option>
+            <option id='gradient' value="gradient">Gradient</option>
             <option id='rounded' value="rounded">Rounded</option>
+            <option id='wavyUnderline' value="wavyUnderline">Wavy Underline</option>
           </select>
         </div>
       </div>
