@@ -35,11 +35,10 @@ class Buttons extends Component {
         alert('You did bad:', error)
       }
     } else {
-
       try {
         let addlSearchTerm = e.target.value
 
-        if (addlSearchTerm === 'try it out') {
+        if (addlSearchTerm === 'tryitout') {
           window.location.reload()
         }
 
@@ -83,7 +82,7 @@ class Buttons extends Component {
         }
 
       } catch (error) {
-        alert('You no good:', + error)
+        window.location.reload()
       }
     }
   }
@@ -100,7 +99,7 @@ class Buttons extends Component {
         </div>
         <div>
           <select id="buttons" onChange={this.handleChange.bind(this)}>
-            <option id="button-choice" value="try it out">Try It Out!</option>
+            <option id="try it out" value="tryitout">Try It Out!</option>
             <option id='basic' value="basic">Basic</option>
             <option id='backgroundImage' value="backgroundImage">Background Image</option>
             <option id='border' value="border">Border</option>
