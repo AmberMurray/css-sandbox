@@ -11,6 +11,14 @@ button, input, {
   line-height: 1.2em;
 }
 
+.backgroundImage {
+  background-image: url('http://2.bp.blogspot.com/-D6NFfi7bVJo/UyBpf_MY27I/AAAAAAAAcpA/xemTnL4nfxw/s1600/cloud_paper_button.png');
+}
+
+.border {
+  border: 5px red dashed;
+}
+
 .color {
   background-color: #2bcaf2;
   color: #fff;
