@@ -105,7 +105,7 @@ class Forms extends Component {
         <div>
           <select id="forms" onChange={this.handleChange.bind(this)}>
             <option id="form-choice" value="choose one">Choose One!</option>
-            <option id='minimal' value="minimal">Minimal</option>
+            <option id='base' value="base">Base</option>
           </select>
         </div>
       </div>

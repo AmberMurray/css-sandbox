@@ -2,7 +2,7 @@ button, input {
   -webkit-appearance: none;
 }
 
-.minimal {
+.base {
   background-color: #fff;
   border: 1px solid #737576;
   height: 50px;
