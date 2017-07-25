@@ -102,7 +102,8 @@ class Buttons extends Component {
           <select id="buttons" onChange={this.handleChange.bind(this)}>
             <option id="button-choice" value="try it out">Try It Out!</option>
             <option id='basic' value="basic">Basic</option>
-            <option id='press' value="press">Press</option>
+            <option id='color' value="color">Color</option>
+            <option id='rounded' value="rounded">Rounded</option>
           </select>
         </div>
       </div>

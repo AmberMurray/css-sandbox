@@ -4,9 +4,18 @@ button, input, {
 
 .basic {
   background-color: #fff;
+  height: 60px;
+  width: 200px;
+  color: #4c5051;
+  font-size: 24px;
+  line-height: 1.2em;
 }
 
-.press {
+.color {
   background-color: #2bcaf2;
   color: #fff;
+}
+
+.rounded {
+  border-radius: 30px;
 }

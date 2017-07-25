@@ -135,8 +135,6 @@ class Home extends Component {
     let formComponent
     let formatted
 
-    console.log('in alterFormState', cssText);
-
     if (classes.length > 0) {
       classes.forEach(name => {
         if(value === name) {

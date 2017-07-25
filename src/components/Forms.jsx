@@ -32,8 +32,6 @@ class Forms extends Component {
           this.setState({ counter: false })
 
         } else {
-
-          console.log(cssText);
           this.props.alterFormState(e.target.value, cssText, 'forms')
 
           this.setState({ counter: false })
