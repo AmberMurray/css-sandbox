@@ -87,7 +87,6 @@ class Home extends Component {
 
   formatText (text) {
     let newText = text.replace(/;/g, ';\n')
-    // console.log(newText);
     return newText
   }
 

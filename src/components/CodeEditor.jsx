@@ -38,7 +38,7 @@ class CodeEditor extends Component {
 
   onChange (newValue) {
     if(this.state.keyframeName){
-      let newName = newValue.split('.')[1]
+      let newName = newValue.split(' ')[0].replace('.', '')
       console.log(newName);
       let ruleSplit = newValue.split('@')
       this.setState({ cssRule: ruleSplit[0], keyframeRule: '@' + ruleSplit[1], editorText: newValue, keyframeName: newName })
