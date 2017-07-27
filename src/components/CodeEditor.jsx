@@ -22,6 +22,7 @@ class CodeEditor extends Component {
     this.onChange = this.onChange.bind(this)
     this.handleClick = this.handleClick.bind(this)
     this.updateStyleSheets = this.updateStyleSheets.bind(this)
+    this.updateAnimationStyleSheets = this.updateAnimationStyleSheets.bind(this)
   }
 
   componentWillReceiveProps(nextProps) {
@@ -38,7 +39,7 @@ class CodeEditor extends Component {
 
   onChange (newValue) {
 
-    if(this.state.keyframeName){
+    if(this.props.animationName){
       let newName = newValue.split(' ')[0].replace('.', '')
       let ruleSplit = newValue.split('@')
       this.setState({ cssRule: ruleSplit[0], keyframeRule: '@' + ruleSplit[1], editorText: newValue, keyframeName: newName })
@@ -47,31 +48,76 @@ class CodeEditor extends Component {
     }
   }
 
-  updateStyleSheets (newValue, searchParam) {
+  updateAnimationStyleSheets (newCssRule, newKeyFrameRule, searchParam) {
     let styleSheets = document.styleSheets
-    let searchProp = this.props.animationName ? 'name' : 'selectorText'
 
-    for(let i = 0; i < styleSheets.length; i++) {
-	    if(styleSheets[i].cssRules) {
-        for (let j = 0; j < styleSheets[i].cssRules.length; j++ ) {
-          if(styleSheets[i].cssRules[j][searchProp] === searchParam && searchProp === 'name' ) {
-                styleSheets[i].deleteRule(j)
-                styleSheets[i].deleteRule(j)
-                styleSheets[i].insertRule(this.state.cssRule, 0)
-                styleSheets[i].insertRule(this.state.keyframeRule, 1)
-            } else if (styleSheets[i].cssRules[j][searchProp] === searchParam) {
-              styleSheets[i].deleteRule(j)
-              styleSheets[i].insertRule(newValue, 0)
-            }
-          }
-        }
+    Array.from(styleSheets).forEach((styleSheet, i) => {
+      if(!styleSheet.cssRules) {
+        return
       }
+      Array.from(styleSheet.cssRules).forEach((rule, j) => {
+        if(rule.name === searchParam || rule.selectorText === searchParam ) {
+          // itemsToDelete.push(rule)
+          styleSheet.deleteRule(j)
+        }
+      })
+        styleSheet.insertRule(newCssRule, 0)
+        styleSheet.insertRule(newKeyFrameRule, 1)
+    })
+  }
+
+  updateStyleSheets (newCssRule, searchParam) {
+    let styleSheets = document.styleSheets
+    // let searchProp = this.props.animationName ? 'name' : 'selectorText'
+    // let itemsToDelete = []
+
+      Array.from(styleSheets).forEach((styleSheet, i) => {
+        if(!styleSheet.cssRules) {
+          return
+        }
+        Array.from(styleSheet.cssRules).forEach((rule, j) => {
+          if(rule.selectorText === searchParam ) {
+            // itemsToDelete.push(rule)
+            styleSheet.deleteRule(j)
+          }
+        })
+        styleSheet.insertRule(newCssRule, 0)
+      })
     }
+
+
+
+
+
+
+
+
+  // updateStyleSheets (newValue, searchParam) {
+  //   let styleSheets = document.styleSheets
+  //   let searchProp = this.props.animationName ? 'name' : 'selectorText'
+  //
+  //   for(let i = 0; i < styleSheets.length; i++) {
+	//     if(styleSheets[i].cssRules) {
+  //       for (let j = 0; j < styleSheets[i].cssRules.length; j++ ) {
+  //         if(styleSheets[i].cssRules[j][searchProp] === searchParam && searchProp === 'name' ) {
+  //               styleSheets[i].deleteRule(j)
+  //               styleSheets[i].deleteRule(j)
+  //               styleSheets[i].insertRule(this.state.cssRule, 0)
+  //               styleSheets[i].insertRule(this.state.keyframeRule, 1)
+  //           } else if (styleSheets[i].cssRules[j][searchProp] === searchParam) {
+  //             styleSheets[i].deleteRule(j)
+  //             styleSheets[i].insertRule(newValue, 0)
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
 
   handleClick(e) {
     try {
-      if(this.state.keyframeRule) {
-        this.updateStyleSheets(this.state.cssRule + this.state.keyframeRule, this.state.keyframeName)
+      if(this.props.animationName) {
+        this.updateAnimationStyleSheets(this.state.cssRule, this.state.keyframeRule, this.state.keyframeName)
+        this.updateStyleSheets(this.state.cssRule, this.state.className)
       } else {
         this.updateStyleSheets(this.state.cssRule, this.state.className)
       }
