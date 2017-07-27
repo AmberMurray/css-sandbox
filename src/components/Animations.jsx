@@ -39,8 +39,6 @@ class Animations extends Component {
     } else {
       try {
 
-        this.props.setAnimationName(e.target.value)
-
         let addlSearchTerm = e.target.value
 
         if (addlSearchTerm === 'select') {
@@ -81,8 +79,10 @@ class Animations extends Component {
         }
 
         if(keyframeRule) {
+          this.props.setAnimationName(keyframeValue)
           this.props.alterAnimationState(e.target.value, cssRule + '\n \n' + keyframeRule, 'animations')
         } else {
+          this.props.setAnimationName(null)
           this.props.alterAnimationState(e.target.value, cssRule, 'animations')
         }
 
@@ -93,6 +93,8 @@ class Animations extends Component {
   }
 
   render() {
+
+    console.log(this.props);
 
     return (
       <div>

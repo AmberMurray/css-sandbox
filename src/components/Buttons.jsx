@@ -76,8 +76,10 @@ class Buttons extends Component {
         }
 
         if(keyframeRule) {
+          this.props.setAnimationName(keyframeValue)
           this.props.alterButtonState(e.target.value, cssRule + '\n \n' + keyframeRule, 'buttons')
         } else {
+          this.props.setAnimationName(null)
           this.props.alterButtonState(e.target.value, cssRule, 'buttons')
         }
 

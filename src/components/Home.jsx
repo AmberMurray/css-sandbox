@@ -198,6 +198,8 @@ class Home extends Component {
                 alterButtonState={this.alterButtonState}
                 getStyleSheets={this.getStyleSheets}
                 options={this.state.options.buttons}
+                setAnimationName={this.setAnimationName}
+                animationName={this.state.animationName}
               />
             </div>
             <div className='forms-select'>
@@ -205,6 +207,8 @@ class Home extends Component {
               alterFormState={this.alterFormState}
               getStyleSheets={this.getStyleSheets}
               options={this.state.options.forms}
+              setAnimationName={this.setAnimationName}
+              animationName={this.state.animationName}
               />
             </div>
           </div>

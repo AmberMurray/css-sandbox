@@ -82,8 +82,10 @@ class Forms extends Component {
         }
 
         if(keyframeRule) {
+          this.props.setAnimationName(keyframeValue)
           this.props.alterFormState(e.target.value, cssRule + '\n \n' + keyframeRule, 'forms')
         } else {
+          this.props.setAnimationName(null)
           this.props.alterFormState(e.target.value, cssRule, 'forms')
         }
 
