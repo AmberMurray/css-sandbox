@@ -38,6 +38,9 @@ class Animations extends Component {
 
     } else {
       try {
+
+        this.props.setAnimationName(e.target.value)
+
         let addlSearchTerm = e.target.value
 
         if (addlSearchTerm === 'select') {

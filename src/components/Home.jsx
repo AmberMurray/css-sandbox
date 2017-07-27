@@ -18,6 +18,7 @@ let initialState = {
   forms: 'Choose One!',
   formComponent: null,
   animationName: '',
+  isAnimationFlag: false,
   id: ['animations', 'buttons', 'forms'],
   options: {'animations': {}, 'buttons': {}, 'forms': {}},
 }
@@ -188,6 +189,8 @@ class Home extends Component {
                 alterAnimationState={this.alterAnimationState}
                 getStyleSheets={this.getStyleSheets}
                 options={this.state.options.animations}
+                setAnimationName={this.setAnimationName}
+                animationName={this.state.animationName}
               />
             </div>
             <div className='buttons-select'>
